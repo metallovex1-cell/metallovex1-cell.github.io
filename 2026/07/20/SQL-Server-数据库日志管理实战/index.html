@@ -24,7 +24,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server 数据库日志文件管理与收缩实践">
 <meta property="og:url" content="http://example.com/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name">
 <meta property="og:description" content="背景与问题本文记录了一次针对数据库 XXX__Web 的日志维护操作，包括：  将恢复模式临时切换为 简单模式（SIMPLE） 以收缩日志； 使用 DBCC SHRINKFILE 收缩日志文件至指定大小； 查询当前数据文件大小以验证效果； 最后将恢复模式恢复为 完整模式（FULL） 以保证数据安全。   ⚠️ 重要提示：在生产环境中操作前，请务必完整备份数据库，并确认业务允许短暂的日志截断操作。本">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-20T07:30:00.000Z">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>SQL Server 数据库日志文件管理与收缩实践 | Hexo</title>
+  <title>SQL Server 数据库日志文件管理与收缩实践 | </title>
   
 
 
@@ -99,7 +99,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title"></h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -162,7 +162,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
