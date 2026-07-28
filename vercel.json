@@ -7,7 +7,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "middleware": "middleware.js"
+      "middleware": 1
     },
     {
       "src": "/public/(.*)",
