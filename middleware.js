@@ -56,7 +56,7 @@ export default function middleware(request) {
       <body>
         <div class="box">
           <h2> </h2>
-          <p></p>
+          <p>密码提示 123</p>
           <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
             <div class="input-group">
               <input type="password" id="pwd" placeholder="请输入密码" autofocus />
