@@ -55,7 +55,7 @@ export default function middleware(request) {
       </head>
       <body>
         <div class="box">
-          <h2>🔒 请输入访问密码</h2>
+          <h2>🔒 </h2>
           <p>需要密码才能访问</p>
           <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
             <div class="input-group">
