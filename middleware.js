@@ -56,7 +56,7 @@ export default function middleware(request) {
       <body>
         <div class="box">
           <h2>🔒 请输入访问密码</h2>
-          <p>此博客为内部资料，需要密码才能访问</p>
+          <p>需要密码才能访问</p>
           <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
             <div class="input-group">
               <input type="password" id="pwd" placeholder="请输入密码" autofocus />
