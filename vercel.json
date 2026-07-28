@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "public/**",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ]
+}
