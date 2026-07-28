@@ -1,0 +1,292 @@
+# ===============================================================
+# WikiFlow Theme Configuration Example
+# ===============================================================
+#
+# 推荐做法：在 Hexo 站点根目录创建 `_config.wikiflow.yml`，把需要修改的
+# 配置复制过去。这样升级主题时不容易产生冲突。
+#
+# URL 类配置通常可以写成：
+#   - `/logo.png`：站点 source 目录下的绝对路径
+#   - `https://example.com/file.css`：外部资源
+#   - 空值：不启用或交给主题默认行为
+
+# ---------------------------------------------------------------
+# Custom File Injection
+# ---------------------------------------------------------------
+#
+# 在主题预留位置插入站点自定义片段。文件路径由 Hexo 解析，通常放在
+# 站点的 `source/_data` 目录中。
+#
+# View 注入点会插入 EJS 片段；style 注入点会插入 Stylus 文件。
+# 常见用途：
+#   - head/bodyEnd：插入额外 meta、统计脚本或第三方脚本
+#   - postBodyStart/postBodyEnd：在文章正文前后插入统一内容
+#   - variable/mixin/style：覆盖主题变量或追加站点样式
+custom_file_path:
+  # head: source/_data/wikiflow-head.ejs
+  # header: source/_data/wikiflow-header.ejs
+  # sidebar: source/_data/wikiflow-sidebar.ejs
+  # postMeta: source/_data/wikiflow-post-meta.ejs
+  # postBodyStart: source/_data/wikiflow-post-body-start.ejs
+  # postBodyEnd: source/_data/wikiflow-post-body-end.ejs
+  # footer: source/_data/wikiflow-footer.ejs
+  # bodyEnd: source/_data/wikiflow-body-end.ejs
+  # comment: source/_data/wikiflow-comment.ejs
+  # variable: source/_data/wikiflow-variables.styl
+  # mixin: source/_data/wikiflow-mixins.styl
+  # style: source/_data/wikiflow-styles.styl
+
+# 运行时注入结果。普通用户保持空数组即可；主题插件会在生成阶段填充它。
+injects:
+  variable: []
+  mixin: []
+  style: []
+
+# ---------------------------------------------------------------
+# Site Information
+# ---------------------------------------------------------------
+
+# 浏览器标签页和收藏夹图标。文件通常放在站点 `source/favicon.ico`。
+favicon: /favicon.ico
+
+# 页头左侧 Logo。
+logo:
+  # 是否显示 Logo 图标。关闭后仍会显示站点标题。
+  enabled: true
+  # Logo 显示尺寸，单位为 px。
+  width: 40
+  height: 40
+  # Logo 图片 URL。文件通常放在站点 `source/logo.png`。
+  url: /logo.png
+
+# ---------------------------------------------------------------
+# Footer Settings
+# ---------------------------------------------------------------
+
+footer:
+  # ICP 和公安备案信息。默认关闭；面向中国大陆公开访问的网站可按需启用。
+  # 参考：https://beian.miit.gov.cn, https://beian.mps.gov.cn
+  beian:
+    enable: false
+    # ICP 备案号，例如：京ICP备12345678号-1。
+    icp:
+    # 公安备案号中的数字部分。
+    gongan_id:
+    # 公安备案完整编号，例如：京公网安备11000002000001号。
+    gongan_num:
+    # 公安备案图标 URL。文件通常放在站点 `source` 目录中。
+    gongan_icon_url:
+
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+
+# 顶部主导航。键是显示文字，值是链接。
+# 链接可以是站内路径，也可以是完整外部 URL。
+menu:
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  关于: /about
+
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+# 文章目录和 widgets 所在侧栏的位置。
+# Markdown 文章和页面默认显示大纲；可在 front-matter 中设置 `toc: false` 关闭。
+sidebar:
+  # 可选值：left、right。
+  position: left
+
+# 右侧个人资料栏。适合个人 wiki 或知识库；团队文档站可以关闭。
+profile:
+  # 是否显示个人资料栏。
+  enabled: false
+  # 本地头像路径。设置 `gravatar` 后会优先使用 Gravatar。
+  avatar:
+  # Gravatar 邮箱。留空时使用 `avatar`。
+  gravatar:
+  # 资料栏显示名称；留空时建议由站点标题兜底。
+  author: WikiFlow User
+  # 名称下方的身份说明。
+  author_title: Knowledge Base Maintainer
+  # 位置文本。
+  location: Your Location
+  # “关注我”按钮链接。
+  follow: https://github.com/AlliotTech/
+
+# 资料栏社交链接。键名会同时作为 Font Awesome 图标名，例如 `github`
+# 会渲染 Font Awesome 的 github 品牌图标。`rss` 还会用于 `<link rel="alternate">`。
+social:
+  github: https://github.com/AlliotTech/hexo-theme-wikiflow
+  rss: /atom.xml
+
+social_icons:
+  # 是否给资料栏社交图标添加 tooltip 样式。
+  tooltip: true
+
+# ---------------------------------------------------------------
+# Home And Widget Settings
+# ---------------------------------------------------------------
+
+# 首页行为。
+home:
+  # 如果设置为某篇文章文件名，首页会直接展示 `source/_posts` 下的这篇文章；
+  # 留空则显示默认文章列表。
+  index_file: index.md
+
+# 分类 widget。
+category:
+  # external：构建一次共享 JSON，前端按需渲染目录树，避免每页重复输出全站文章树。
+  # full：保持旧版行为，服务端在每个页面完整输出目录树。
+  mode: external
+  # true：默认展开全部分类目录；false：只展开当前文章所在分支。
+  expand_all: false
+
+# 最近文章 widget。
+recent_posts:
+  # 是否在最近文章列表中显示缩略图。缩略图来自文章 front-matter 的
+  # `thumbnail` 或 `banner`。
+  thumbnail: true
+
+# ---------------------------------------------------------------
+# Post Settings
+# ---------------------------------------------------------------
+
+# 文章头部 meta 信息。
+post_meta:
+  updated_at:
+    # 是否显示更新时间。只有当文章 front-matter 显式填写 `updated`，
+    # 且 `updated` 晚于 `date` 时才会显示。
+    enable: true
+
+# 文章源码历史链接，会在文章 meta 中显示 Source / Edit / History。
+post_history:
+  # 关闭后不会显示源码历史按钮。
+  enable: false
+  # 代码托管服务地址。当前链接格式按 GitHub/GitLab 一类路径拼接。
+  server_url: https://github.com
+  # 仓库 owner 或组织名。
+  owner: AlliotTech
+  # 仓库名。
+  repository: hexo-theme-wikiflow
+  # 文章源码所在分支。
+  branch: main
+
+# ---------------------------------------------------------------
+# Code Block Settings
+# ---------------------------------------------------------------
+
+# 代码高亮由 Hexo 的 highlight.js 输出 markup，WikiFlow 负责主题样式和复制按钮。
+codeblock:
+  theme:
+    # highlight.js 主题名，不带 `.css` 后缀，例如 github、monokai。
+    light: monokai
+    # 暗色模式主题。留空时不输出暗色高亮主题。
+    dark: monokai
+
+# ---------------------------------------------------------------
+# Widget Settings
+# ---------------------------------------------------------------
+
+# 侧栏 widgets 顺序。只启用你需要的项，保持侧栏轻量。
+# 可选值：category、recent_posts、archive、tag、tagcloud、links。
+widgets:
+  - category
+  # - recent_posts
+  # - archive
+  # - tag
+  # - tagcloud
+  # - links
+
+# ---------------------------------------------------------------
+# Excerpt Settings
+# ---------------------------------------------------------------
+
+# 自动摘要。文章没有 `<!-- more -->`、excerpt 或 description 时生效。
+auto_excerpt:
+  # 是否自动从正文开头截取摘要。
+  enable: true
+  # 截取正文前几行。
+  lines: 5
+
+# ---------------------------------------------------------------
+# Search Settings
+# ---------------------------------------------------------------
+
+search:
+  # 启用内置 Insight Search UI。需要站点安装 `hexo-generator-json-content`
+  # 并生成 `content.json`。
+  insight: true
+
+# ---------------------------------------------------------------
+# Comment And Share Settings
+# ---------------------------------------------------------------
+
+comment:
+  # Disqus shortname。留空则不加载 Disqus 评论。
+  disqus:
+
+# 分享按钮配置。`default` 使用主题内置分享布局；false 可关闭。
+share: default
+
+# ---------------------------------------------------------------
+# Open Graph Settings
+# ---------------------------------------------------------------
+
+open_graph:
+  # 是否输出 Hexo open_graph helper 生成的 SEO/社交分享 meta。
+  enable: true
+  options:
+    # Facebook App ID。
+    fb_app_id:
+    # Facebook Admin ID。
+    fb_admins:
+    # Twitter/X 用户 ID。
+    twitter_id:
+
+# ---------------------------------------------------------------
+# Vendor Assets
+# ---------------------------------------------------------------
+
+# 第三方资源加载方式。可写：
+#   - cdn / true：使用 `_vendors.yml` 中的 CDN
+#   - local：使用主题 `source/libs` 下的本地文件，不存在时回退 CDN
+#   - false：禁用该资源
+#   - https://...：使用自定义 URL
+vendors:
+  # Font Awesome Free，主题图标依赖它。
+  fontawesome: cdn
+  # Open Sans 字体。默认关闭，减少外部请求。
+  open_sans: false
+  # Source Code Pro 字体。默认关闭，代码字体使用系统等宽字体。
+  source_code_pro: false
+  # MathJax 脚本地址。只有 `plugins.mathjax` 为 true 时才会加载。
+  mathjax: https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js
+
+# ---------------------------------------------------------------
+# Plugin Settings
+# ---------------------------------------------------------------
+
+plugins:
+  # 是否启用内置图片灯箱。
+  gallery: true
+  # 是否启用 MathJax 输出。
+  mathjax: true
+  # Google Analytics tracking ID。留空则不输出。
+  google_analytics:
+  # Google Search Console 站点验证码。留空则不输出。
+  google_site_verification:
+
+# ---------------------------------------------------------------
+# Links Widget
+# ---------------------------------------------------------------
+
+# 友情链接 widget 数据。需要在 `widgets` 中启用 `links` 才会显示。
+# 写法示例：
+# links:
+#     Hexo: https://hexo.io
+#     WikiFlow: https://github.com/AlliotTech/hexo-theme-wikiflow
+links:
