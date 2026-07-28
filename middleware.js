@@ -56,11 +56,11 @@ export default function middleware(request) {
       <body>
         <div class="box">
           <h2>🔒 </h2>
-          <p>需要密码才能访问</p>
+          <p></p>
           <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
             <div class="input-group">
               <input type="password" id="pwd" placeholder="请输入密码" autofocus />
-              <button type="submit">点击进入</button>
+              <button type="submit">点击</button>
             </div>
             <div id="error" class="error">请先输入密码</div>
           </form>
