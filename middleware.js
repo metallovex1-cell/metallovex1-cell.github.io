@@ -1,5 +1,5 @@
-// middleware.js - 使用 Cookie 记住登录状态
-export function middleware(request) {
+// middleware.js - Vercel Edge Middleware 格式
+export default function middleware(request) {
   const requiredPassword = process.env.SITE_PASSWORD || 'default123'
 
   // 检查 Cookie 中是否已有登录标记
@@ -74,6 +74,7 @@ export function middleware(request) {
   })
 }
 
+// 配置匹配所有路径（排除静态资源）
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }
