@@ -1,17 +1,8 @@
 {
-  "functions": {
-    "middleware.js": {
-      "runtime": "edge"
-    }
-  },
   "routes": [
     {
       "src": "/(.*)",
       "middleware": 1
-    },
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
     }
   ]
 }
