@@ -60,7 +60,7 @@ export default function middleware(request) {
           <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
             <div class="input-group">
               <input type="password" id="pwd" placeholder="请输入密码" autofocus />
-              <button type="submit">进入博客</button>
+              <button type="submit">点击进入</button>
             </div>
             <div id="error" class="error">请先输入密码</div>
           </form>
