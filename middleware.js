@@ -1,87 +1,75 @@
-// middleware.js - 适用于 Vercel 的 Edge Middleware
-// 功能：全站密码保护，输入正确密码后通过 Cookie 保持 7 天登录状态
+// middleware.js - 同时兼容 Vercel 和 EdgeOne Pages 的密码保护中间件
 
-export default function middleware(request) {
-  // 从环境变量读取密码，如果未设置则使用默认密码 'default123'
-  const requiredPassword = process.env.SITE_PASSWORD || 'default123'
+// 核心处理函数：接收 request 对象，返回 Response
+async function handleRequest(request) {
+    const url = new URL(request.url);
 
-  // 1. 检查 Cookie 中是否已有登录标记
-  const cookieHeader = request.headers.get('cookie') || ''
-  const isLoggedIn = cookieHeader.includes('blog_auth=1')
+    // 1. 静态资源直接放行（图片、CSS、JS 等）
+    const staticExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.css', '.js', '.ico'];
+    if (staticExtensions.some(ext => url.pathname.endsWith(ext))) {
+        // 直接请求源站资源
+        return fetch(request);
+    }
 
-  // 如果已登录，直接放行请求
-  if (isLoggedIn) {
-    return new Response(null, {
-      status: 200,
-      headers: {
-        'x-middleware-rewrite': request.url,
-      },
-    })
-  }
+    // 2. 从环境变量获取密码（未设置则默认为 '123'）
+    const SITE_PASSWORD = process.env.SITE_PASSWORD || '123';
 
-  // 2. 检查 URL 参数中的密码（用于首次登录验证）
-  const url = new URL(request.url)
-  const password = url.searchParams.get('pwd')
+    // 3. 检查 Cookie 是否已登录
+    const cookie = request.headers.get('cookie') || '';
+    if (cookie.includes('blog_auth=1')) {
+        return fetch(request);
+    }
 
-  // 如果密码正确，设置 Cookie 并重定向到首页（去掉密码参数）
-  if (password === requiredPassword) {
-    const headers = new Headers()
-    headers.append(
-      'Set-Cookie',
-      'blog_auth=1; Max-Age=604800; Path=/; HttpOnly; Secure; SameSite=Strict'
-    )
-    headers.append('Location', '/')
-    return new Response(null, {
-      status: 302,
-      headers,
-    })
-  }
+    // 4. 检查 URL 参数中的密码（用于首次登录）
+    const password = url.searchParams.get('pwd');
+    if (password === SITE_PASSWORD) {
+        // 密码正确：设置 Cookie 并重定向到首页
+        return new Response(null, {
+            status: 302,
+            headers: {
+                'Location': '/',
+                'Set-Cookie': 'blog_auth=1; Max-Age=604800; Path=/; HttpOnly; Secure; SameSite=Strict'
+            }
+        });
+    }
 
-  // 3. 未登录且密码错误或未提供，显示密码输入页面
-  const html = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>输入密码</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; }
-          .box { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
-          h2 { margin-bottom: 8px; color: #333; font-weight: 600; }
-          p { color: #666; font-size: 14px; margin-bottom: 24px; }
-          .input-group { display: flex; flex-direction: column; gap: 12px; }
-          input { padding: 14px 20px; font-size: 16px; border: 2px solid #e5e7eb; border-radius: 10px; outline: none; transition: border-color 0.2s; }
-          input:focus { border-color: #0070f3; }
-          button { padding: 14px 24px; font-size: 16px; font-weight: 600; background: #0070f3; color: white; border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s; }
-          button:hover { background: #005bb5; }
-          .error { color: #e53e3e; font-size: 14px; margin-top: 12px; display: none; }
-        </style>
-      </head>
-      <body>
-        <div class="box">
-          <h2></h2>
-          <p>密码提示 123 </p>
-          <form onsubmit="event.preventDefault(); const pwd=document.getElementById('pwd').value; if(!pwd){document.getElementById('error').style.display='block'}else{window.location.href='?pwd='+encodeURIComponent(pwd)}">
-            <div class="input-group">
-              <input type="password" id="pwd" placeholder="请输入密码" autofocus />
-              <button type="submit">点击进入</button>
-            </div>
-            <div id="error" class="error"></div>
-          </form>
-        </div>
-      </body>
-    </html>
-  `
+    // 5. 未登录且密码错误或未提供 → 显示密码输入页面
+    const html = `<!DOCTYPE html>
+<html>
+<head>
+    <title>输入密码</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:sans-serif;background:#f5f5f5}
+        .box{background:#fff;padding:40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.1);text-align:center;max-width:400px;width:90%}
+        h2{margin-bottom:8px;color:#333}
+        input{padding:14px 20px;font-size:16px;border:2px solid #e5e7eb;border-radius:10px;width:100%;box-sizing:border-box}
+        button{padding:14px;font-size:16px;font-weight:600;background:#0070f3;color:#fff;border:none;border-radius:10px;cursor:pointer;width:100%;margin-top:12px}
+        button:hover{background:#005bb5}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>🔒 请输入访问密码 123 </h2>
+        <form onsubmit="event.preventDefault(); window.location.href='?pwd=' + document.getElementById('pwd').value">
+            <input type="password" id="pwd" placeholder="请输入密码" autofocus>
+            <button type="submit">进入</button>
+        </form>
+    </div>
+</body>
+</html>`;
 
-  // 返回密码输入页面
-  return new Response(html, {
-    headers: { 'Content-Type': 'text/html' },
-  })
+    return new Response(html, {
+        headers: { 'Content-Type': 'text/html' }
+    });
 }
 
-// 配置中间件匹配规则：保护所有路径，除了 _next/static、favicon.ico 等系统资源
-export const config = {
-  matcher: '/((?!_next/static|_next/image|favicon.ico).*)',
+// 1️⃣ Vercel 使用默认导出（直接接收 request）
+export default handleRequest;
+
+// 2️⃣ EdgeOne Pages 使用命名导出 middleware（接收 context 对象）
+export function middleware(context) {
+    const { request } = context;
+    return handleRequest(request);
 }
