@@ -11,42 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
     
-        <meta name="description" content="1. 一句话总结：系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。2. 测试概述   项目名称 网页版接发车性能测试报告    测试版本 v1.0.0   测试环境 [测试环境描述，如：Windows 10 &#x2F; Chrome 151]   测试负责人 [曹淼]   报告日期 2026-07-27">
+        <meta name="description" content="这篇文章已加密，请输入密码查看。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网页版接发车性能测试报告2026_07_27">
 <meta property="og:url" content="http://example.com/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="1. 一句话总结：系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。2. 测试概述   项目名称 网页版接发车性能测试报告    测试版本 v1.0.0   测试环境 [测试环境描述，如：Windows 10 &#x2F; Chrome 151]   测试负责人 [曹淼]   报告日期 2026-07-27">
+<meta property="og:description" content="这篇文章已加密，请输入密码查看。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20260727162808069.png">
-<meta property="og:image" content="http://example.com/images/image-20260727163049417.png">
-<meta property="og:image" content="http://example.com/images/image-20260727163103745.png">
-<meta property="og:image" content="http://example.com/images/image-20260727163124934.png">
-<meta property="og:image" content="http://example.com/images/image-20260727163148230.png">
-<meta property="og:image" content="http://example.com/images/image-20260727163423550.png">
-<meta property="og:image" content="http://example.com/images/image-20260727164027653.png">
-<meta property="og:image" content="http://example.com/images/image-20260727164734351.png">
-<meta property="og:image" content="http://example.com/images/image-20260727164808186.png">
-<meta property="og:image" content="http://example.com/images/image-20260727164841923.png">
-<meta property="og:image" content="http://example.com/images/image-20260727164909882.png">
-<meta property="og:image" content="http://example.com/images/image-20260727165009172.png">
-<meta property="og:image" content="http://example.com/images/image-20260727165226219.png">
-<meta property="og:image" content="http://example.com/images/image-20260727165432090.png">
-<meta property="og:image" content="http://example.com/images/image-20260727171614465.png">
-<meta property="og:image" content="http://example.com/images/image-20260727172829672.png">
-<meta property="og:image" content="http://example.com/images/image-20260727172810749.png">
-<meta property="og:image" content="http://example.com/images/image-20260727172429057.png">
-<meta property="og:image" content="http://example.com/images/image-20260727173014860.png">
-<meta property="og:image" content="http://example.com/images/image-20260727173155084.png">
-<meta property="og:image" content="http://example.com/images/image-20260727173353303.png">
-<meta property="og:image" content="http://example.com/images/image-20260727173449852.png">
 <meta property="article:published_time" content="2026-07-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-28T09:23:27.156Z">
+<meta property="article:modified_time" content="2026-07-30T08:07:51.440Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="测试报告">
 <meta property="article:tag" content="软件测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20260727162808069.png">
     
     
 
@@ -251,198 +228,35 @@
 
 
 
-    
-        <details class="post-toc post-toc-mobile">
-            <summary class="post-toc-title">文章目录</summary>
-            <div class="post-toc-body">
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1. 一句话总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81300%E7%94%A8%E6%88%B7%E5%9C%A8%E7%BA%BF%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BD%86%E5%B9%B6%E5%8F%91%E9%87%8F60%E5%B7%A6%E5%8F%B3%E6%97%B6%E6%98%93%E5%87%BA%E7%8E%B0%E7%99%BB%E5%BD%95%E8%B6%85%E6%97%B6%EF%BC%8Cocc%E4%B8%8E%E8%AF%84%E4%BB%B7%E5%8F%8Afdserver%E8%BF%9E%E6%8E%A5%E5%81%B6%E7%8E%B0%E9%94%99%E8%AF%AF%E5%AF%BC%E8%87%B4%E6%B2%A1%E6%9C%89%E5%BC%95%E5%AF%BC%E6%B5%81%E7%A8%8B%E6%88%96%E6%93%8D%E4%BD%9C%E5%8F%8A%E8%AF%84%E4%BB%B7%E8%AE%B0%E5%BD%95%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%B5%8B%E8%AF%95%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">2. 测试概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4"><span class="toc-number">3.</span> <span class="toc-text">3. 测试范围</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9C%AC%E6%AC%A1%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%9A%84%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 本次测试覆盖的功能模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%B8%8D%E5%9C%A8%E6%9C%AC%E6%AC%A1%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 不在本次测试范围内的内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5"><span class="toc-number">4.</span> <span class="toc-text">4. 测试策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5"><span class="toc-number">5.</span> <span class="toc-text">5. 测试执行情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%80%EF%BC%9A300%E7%94%A8%E6%88%B7%E7%BA%BF%E6%80%A7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81300%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E5%9C%A8%E7%BA%BF%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E3%80%82"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%BA%8C%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C60%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.2.</span> <span class="toc-text">5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%89%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C30%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E5%B9%B6%E6%8C%81%E7%BB%AD%E9%85%8D%E7%BD%AE%E8%BF%9B%E8%B7%AF%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.3.</span> <span class="toc-text">5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E5%9B%9B%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C30%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E5%B9%B6%E6%8C%81%E7%BB%AD%E9%85%8D%E7%BD%AE%E8%BF%9B%E8%B7%AF%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.4.</span> <span class="toc-text">5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E7%BC%BA%E9%99%B7%E8%AF%B4%E6%98%8E"><span class="toc-number">5.5.</span> <span class="toc-text">5. 关键缺陷说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-001%EF%BC%9AOCC%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E4%B8%BA%E7%BA%BF%E6%80%A7%E7%99%BB%E5%BD%95%EF%BC%8C%E5%B9%B6%E5%8F%91%E9%87%8F%E8%BE%83%E5%A4%A7%E6%97%B6%E6%98%93%E5%87%BA%E7%8E%B0%E7%99%BB%E5%BD%95%E8%B6%85%E6%97%B6%E3%80%82"><span class="toc-number">5.5.1.</span> <span class="toc-text">BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-002%EF%BC%9AOCC%E5%90%8Cfdserver%E8%BF%9E%E6%8E%A5%E5%8F%8A%E5%90%8C%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%E8%BF%9E%E6%8E%A5%E6%98%93%E5%87%BA%E7%8E%B0%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF%EF%BC%8C%E5%AF%BC%E8%87%B4%E6%B2%A1%E6%9C%89%E5%BC%95%E5%AF%BC%E6%B5%81%E7%A8%8B%E6%88%96%E6%B2%A1%E6%9C%89%E8%AF%84%E4%BB%B7%E7%BB%93%E6%9E%9C%E3%80%82"><span class="toc-number">5.5.2.</span> <span class="toc-text">BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-003%EF%BC%9A%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%E8%AE%A1%E5%88%86%E5%AD%98%E5%9C%A8%E4%B8%8D%E5%87%86%E7%A1%AE%EF%BC%8C%E5%B7%B2%E6%93%8D%E4%BD%9C%E7%9A%84%E6%AD%A5%E9%AA%A4%E6%9C%AA%E8%AE%A1%E5%88%86%E3%80%82"><span class="toc-number">5.5.3.</span> <span class="toc-text">BUG-003：评价系统计分存在不准确，已操作的步骤未计分。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">5.6.</span> <span class="toc-text">6. 测试环境与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0"><span class="toc-number">5.7.</span> <span class="toc-text">7. 风险评估</span></a></li></ol></li></ol>
-            </div>
-        </details>
-    
-
 
         
         
         
-            <h1 id="1-一句话总结："><a href="#1-一句话总结：" class="headerlink" title="1. 一句话总结："></a>1. 一句话总结：</h1><h2 id="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"><a href="#系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。" class="headerlink" title="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"></a>系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</h2><h1 id="2-测试概述"><a href="#2-测试概述" class="headerlink" title="2. 测试概述"></a>2. 测试概述</h1><table>
-<thead>
-<tr>
-<th>项目名称</th>
-<th>网页版接发车性能测试报告</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试版本</td>
-<td>v1.0.0</td>
-</tr>
-<tr>
-<td>测试环境</td>
-<td>[测试环境描述，如：Windows 10 &#x2F; Chrome 151]</td>
-</tr>
-<tr>
-<td>测试负责人</td>
-<td>[曹淼]</td>
-</tr>
-<tr>
-<td>报告日期</td>
-<td>2026-07-27</td>
-</tr>
-</tbody></table>
-<h1 id="3-测试范围"><a href="#3-测试范围" class="headerlink" title="3. 测试范围"></a>3. 测试范围</h1><h3 id="3-1-本次测试覆盖的功能模块"><a href="#3-1-本次测试覆盖的功能模块" class="headerlink" title="3.1 本次测试覆盖的功能模块"></a>3.1 本次测试覆盖的功能模块</h3><ul>
-<li><input disabled="" type="checkbox"> 模块一：[occ登录]</li>
-<li><input disabled="" type="checkbox"> 模块二：[单机版开课]</li>
-<li><input disabled="" type="checkbox"> 模块三：[联锁页面操作]</li>
-</ul>
-<h3 id="3-2-不在本次测试范围内的内容"><a href="#3-2-不在本次测试范围内的内容" class="headerlink" title="3.2 不在本次测试范围内的内容"></a>3.2 不在本次测试范围内的内容</h3><ul>
-<li><input disabled="" type="checkbox"> 模块四：[其它模块]（重点测试了性能问题改动风险大的模块）</li>
-</ul>
-<h1 id="4-测试策略"><a href="#4-测试策略" class="headerlink" title="4. 测试策略"></a>4. 测试策略</h1><table>
-<thead>
-<tr>
-<th>测试类型</th>
-<th>执行情况</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>功能测试</td>
-<td>⏳ 进行中</td>
-<td>[基本功能满足演示邀请，单系统功能还在持续开发，功能测试也在持续开展中。]</td>
-</tr>
-<tr>
-<td>性能测试</td>
-<td>⏳ 进行中</td>
-<td>[重点功能已完成测试，且有明确测试结果，后续持续跟踪问题修复进展，及完善测试场景]</td>
-</tr>
-<tr>
-<td>兼容性测试</td>
-<td>⏳ 进行中</td>
-<td>[重点测试chrome浏览器，firefox和liunux版本浏览器确认存在问题当前版本不支持]</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>测试工具</strong>：[python定制化开发接发车系统并发测试工具，grafana、prometheus]</p>
-</blockquote>
-<hr>
-<h1 id="5-测试执行情况"><a href="#5-测试执行情况" class="headerlink" title="5. 测试执行情况"></a>5. 测试执行情况</h1><h3 id="5-1-测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。"><a href="#5-1-测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。" class="headerlink" title="5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。"></a>5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。</h3><p>测试结果：300用户并发顺序登录系统，平均登录耗时1.99s，最大耗时2.38s，最小耗时0.05s，总耗时597.13s。</p>
-<p>测试结果记录：</p>
-<p><img src="/images/image-20260727162808069.png" alt="image-20260727162808069"></p>
-<p>支持300用户在线登录：</p>
-<p><img src="/images/image-20260727163049417.png" alt="image-20260727163049417"></p>
-<p><img src="/images/image-20260727163103745.png" alt="image-20260727163103745"></p>
-<p><img src="/images/image-20260727163124934.png" alt="image-20260727163124934"></p>
-<p><img src="/images/image-20260727163148230.png" alt="image-20260727163148230"></p>
-<p>资源占用情况：cpu，gpu资源均未利用率均未超过80%。</p>
-<p><img src="/images/image-20260727163423550.png" alt="image-20260727163423550"></p>
-<h3 id="5-2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。"><a href="#5-2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。" class="headerlink" title="5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。"></a>5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。</h3><p>测试结果：60用户并发登录时，平均响应时间167s，最大响应时间338s、登录总耗时1586s。</p>
-<p>结果记录：</p>
-<p><img src="/images/image-20260727164027653.png" alt="image-20260727164027653"></p>
-<p>300用户可以登录成功：</p>
-<p><img src="/images/image-20260727164734351.png" alt="image-20260727164734351"></p>
-<p><img src="/images/image-20260727164808186.png" alt="image-20260727164808186"></p>
-<p><img src="/images/image-20260727164841923.png" alt="image-20260727164841923"></p>
-<p><img src="/images/image-20260727164909882.png" alt="image-20260727164909882"></p>
-<p>资源占用</p>
-<p><img src="/images/image-20260727165009172.png" alt="image-20260727165009172"></p>
-<h3 id="5-3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"><a href="#5-3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。" class="headerlink" title="5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"></a>5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</h3><p><img src="/images/image-20260727165226219.png" alt="image-20260727165226219"></p>
-<p>资源占用:</p>
-<p><img src="/images/image-20260727165432090.png" alt="image-20260727165432090"></p>
-<h3 id="5-3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"><a href="#5-3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。" class="headerlink" title="5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"></a>5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</h3><p><img src="/images/image-20260727171614465.png" alt="image-20260727171614465"></p>
-<blockquote>
-</blockquote>
-<hr>
-<h2 id="5-关键缺陷说明"><a href="#5-关键缺陷说明" class="headerlink" title="5. 关键缺陷说明"></a>5. 关键缺陷说明</h2><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。"><a href="#BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。" class="headerlink" title="BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。"></a>BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。</h3><p><img src="/images/image-20260727172829672.png" alt="image-20260727172829672"></p>
-<h3 id="BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。"><a href="#BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。" class="headerlink" title="BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。"></a>BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。</h3><p><img src="/images/image-20260727172810749.png" alt="image-20260727172810749"></p>
-<h3 id="BUG-003：评价系统计分存在不准确，已操作的步骤未计分。"><a href="#BUG-003：评价系统计分存在不准确，已操作的步骤未计分。" class="headerlink" title="BUG-003：评价系统计分存在不准确，已操作的步骤未计分。"></a>BUG-003：评价系统计分存在不准确，已操作的步骤未计分。</h3><p><img src="/images/image-20260727172429057.png" alt="image-20260727172429057"></p>
-<hr>
-<h2 id="6-测试环境与配置"><a href="#6-测试环境与配置" class="headerlink" title="6. 测试环境与配置"></a>6. 测试环境与配置</h2><table>
-<thead>
-<tr>
-<th><img src="/images/image-20260727173014860.png" alt="image-20260727173014860"></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173155084.png" alt="image-20260727173155084"></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173353303.png" alt="image-20260727173353303"></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173449852.png" alt="image-20260727173449852"></td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="7-风险评估"><a href="#7-风险评估" class="headerlink" title="7. 风险评估"></a>7. 风险评估</h2><table>
-<thead>
-<tr>
-<th>风险项</th>
-<th>影响等级</th>
-<th>缓解措施</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>支性能测试未覆盖所有功能</td>
-<td>🟡 中</td>
-<td>后续持续优化更新测试场景和测试数据</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<p><em>报告人：[曹淼]</em><br><em>审核人：[]</em><br><em>日期：2026-07-27</em></p>
-
+            <div class="hbe hbe-container" id="hexo-blog-encrypt"
+     data-hbe-format="4"
+     data-wpm="Oh, this is an invalid password. Check and try again, please."
+     data-whm="Oh, this is an invalid password. Check and try again, please."
+     data-salt="33b3b88f30c95783d870f1ff44e888adaaae4a933bd6ffe7dd8e5257b0a8e183"
+     data-nonce="12b48ed6929e03ed39edfb21"
+     data-kdf-iterations="250000"
+     data-auto-save="false">
+  <script id="hbeData" type="hbeData">
+    79abf690969d122d8cb60359ad91cf771897853be97ca740c95bafdc6e4d16b5b967c34b65056a19cee8517e11817f0d1c8cbd4eaac8268edfb531b0c7e4e3f60ef2762dfb3441e136117c008e585e8e7a356c8b0c134a94b865468a969f4c12aec6e0b99df3f620eac0e8687747bec4c33f02fe4e8720fb99fb8ef7c48830d325d32ba80fb25a90e408936db31ab7f5798acff88f7c2b47992d9b2c9ed9b13251185683c3fc56be88c2e335f7dbf7efdbc46ce5ae4d3cfac80d464620e21ee66978265640b230d89daf76fde0d37d83783a407cd5147a7e9d84cf1e6e2e184249f1718c8a08aaa832644ec0d0f726b515cf701b8af12c8a43c92370952679de0585f5080f121a586b1c81d4be5d0dca47c2e0293d53e7548ef63dafce07eaaf7ff419c6ffc9f0e9d84d358b919d583e81950497fba1e3551188632d1139e4343ec722dbf75192681fd1b9b7595e65c3de591ad0ffa4c9e0008a90ef4ee5f2feefd42784316dc137c477225d583eb691abba6c5445edf4013481d809512be35467c6895d2d700f42bf77c54b478f96929050c78c80a743f80eec8a8e2060d723e57d9197857fa650fcad7ab66e335c4542737acbc20f27f4422260f1bcbe11762043d6112d5ef5af238e872f2c748362b807617572f93778b6c768777232dac3a19fd1daa2c1a4a88b7bf000090530278fb58d8c076b423299798c6504128ac5f0d5d4b866a2a01f4faa75c21020d3fe38e05a42acde101aaaf0d6794c306e41c90b15e700891445277f46e1da00a0dbea2f3986e701ec9461b59787d66017551024c50c00e2c1cc906a48becd773ca73850f256754fbee93d3fcb3c84303a9c364b8b6c963c2c8e461a9d3f8ec5fc8f0ba768b961630deb4d9411e88cbc8c2e5833fbe551c615d1836d26900ac576278e1b7931bcd87eb30641ff9371bfd0891f17b45cdc6c6021b9c5782c25480c94e1ac3b502258acf6ad8f33f91951006deaef4bd3e76554cd9f39112ee14c2b9d5699ffa86af8eb1431cdc89e2aa7d57d9a6c1163b824a4732f097813c9d84888fbd584f2557ec313947f98c135929382cabf7755b962503d3ca046f3e8d51ba21eb9164598e711ff77ecd916e0f7f08cb115c462c1860dde32cb558864b840ec7d20cc34578b4d2f4a8158f4a349924812b1c578525c67b705dcc9f9dbc7e8c3125446787b1dcf9b3a2f541cdd2ea6f4e92d43633440c53471ba02ec1711ddd75f1d10927693bcb7abe57a6b95cf3a0dde934393877182813ea83341e2d5508f811808fe2f66dd1f1e217296971dc2c8c3e0963d7cbf6128053c6c0e1042802f4ae5ea2fd9c0d7d7eac5bf60b29fb50804266382fff90ed52eddb6040459d180500d9709f92e8381d6f354af682478e004c50e50a3635711f025ba4685713c3d3603100aff2148cbef438d49bc321f962121cdfb2879bd04b01f114e81005b8c6b46b777159ea4b379e49790336ed3d1657f2274597121340bc19c97d298fea20da672082b7d2e9b15f99bd0cd18b52ce71c0b6446abcb1394747e804897d45811eca80f883feaa3e03217d7e943fbf55f5b73e240332fdb18fb55d32dbc7fe54d264a95f3c55a1d6ae5008a2aaeb166044456696048fa84cd30f3d9e3d700fd15df03ebaf807f73388cbd6fec8109ed78d48ee0af06d1f5aa1c6dceb206c0444e9c7446fc92c1cb80135fdc782d068632e562e24124b02eb77269730a383e39254f11b2f668d6eed6f4fea22c003dbba2d92bd911bdf5775022eec0bbffe0f6334a4208cf252fb404e00b32ea64b3a76846b6ff9a2bc4e69179a27c48b243bbf43a000593f0b95b7fe3ab8f13e37e0d3ca3c47095199799448bf57df6a076779704704146c04692d0856a006b165576e7a809241d9ecaeefb2bd0dab822fbe0528f0fed1870c71f6812f6a4bcf3768e6933e65ae4cad5dd9e0b935ff819fb438381f58dc8009cb77dc1a13132514d4696afd770871dbae64f033719646cc8470c6e87edc86f39d565e151f255b277d9896c4f8ec0fbfb3459837b1c56ae4d78cc4feaddc1a72a9d532fe10c6de9f49d9a8276a79993bfe15f5de5e6f2896b1e801a41f189d17d591adaf43b80b7bfcf75f966463c61495eba6b57b913526a75a8c610aba2ca1fbaadfcd9a292ee4a1eabae2d538a1ca3459db88bf036b53b7b2fb73f97879e1a5bdede0de8b1694e8ac0bffe9fc5c29d769672697f82e11dc1ecb3fa96e1b9b626e040f2bbc82e9f8dd956c5723e26e79ca0987cc63a227a5d49612b63a1a0c8d4269efb58c1e6c9ce85372de2262b8a7c6a8190e054dd767672d97adb038764c7202bd3853f83b38004d5447522a09fe2d0e080a33b996196584d940e938ab02e6b40431ce97855b366ca8a75b8fc47373cfec7bb734bd54dcba0f1ded59917defcf4b58c26d117d61ab9512140302f00266ef0ce70715ab115f60aa82bc41d4adcd73cd5f386dfb5ce13e824598c59847b1d3f9664a14ab2e2130fb98fc21fc62530f76486c026306847049dc5eabe97c9b01c9dc35750e3cc86fa315907d7dabe1729d3ce379b259351b811f5791331dd42f224ce717ddb8bfff5699405171443884960d7a8964a30548d1cf06607d40b79af47c399eaae441eba61d5f9e6045085d7ca5d58511ca03d5543d031192e0e78a5ed94ed085a5462bccc1735424bf6e6f2ffd0b33654ea2bfecb4b1d3df8c1b1d2ea710770e2fe69612e57163faf69f3f774f0d9af6572fe11cc1693530b323ea2e688e43389c6126d78857ec8ccf9b3ffde80d8c0ba2158f21174381465131a85509c27bba3a2089f5257cd89c454baef2abff231040937e41c0cb8e6ad0a8f8ac98797344ebbf9fac6af6b4817cb4cd74e80a179b0baab8820152e0f527c080a94cc981b15af9b04fdb3035921e9b7dd13a3318f676fd7ff6e5bb09eb8d39d3419acb51ead943ff5917de7756f99070add6a14d05e4d0a5cd7f788d61071dcc2a662c308deba2ec2bc34a1eb04a22e9fd7f6a7efa3a1d2fc373f4bb0d229152e8ac34863e59e90b4a5ae090b5a9a966395272479dd2ad91bc40c417b3d37f6dba3d4849a37c20873e96ce6bafc4680f8bba726e1755a62012070497840c4ef1df9758c7d61721aa4853eee011b26527ddf3964814a4813128c110497135dc2e682d0a8ec856ddca52ecad812c126a23cfb95eb15da4aa275605188374d995d2d8e3ed084ff01f473e3eb401855451bb5620f9d3f965f7e8d22320c4cc67a81f239c2a37fd31f8aa28be51a918f8942eb27dff8f9ce8443d64d12542e226d1b84b2e20acf39b0767532a5d80263f84c7dcb667d8681fee1cf5b5a3ce4c48fb2dc24c5415602a8c0e313bff5c70577d415f9850486c0f7d7980954ac33495fdcdf63a613e8cf47abde8d911a546a79d8a95ad28ea57da6e5d60e99a02ff7a7545599f8d5044c3beea9f201b2c6360cf64cbb71981437e9d89c3c676c38dce03378653804f9d31cdbeb156f4fd24fa6fbcc1388cd2bf9035cad8bf85e195f1026d50b8ba3df6d38f75e4d9d4a6abda2ae253ff404fb30d1a05d7c8fd39b0f180f80d77ed2e7f2ebc6c4e3517ab32a5a6cffa46239d64fb833f38e05802d0832ba09d2ef838e87e042552ca52045ddd50b7752710686b219d795cb61a968c08cb8f3bc574515a032b2d6da88118766b9d82c90d97b84d03b36f5ae4d9117f1d5aa1556fbbc53c668cbfe3a9414bf36e8da4a61707b0432b7857e32d73bd79357093903ad04752df00a407d2f2dc21ecc6c99667ac87268d6c7142e9f9279410b9f3b74b9b61ac55ec906d824f7e16f4a3ee29a14a6ffd81a35bc1e80f0f018ca7beae3f6bd6cd80d616f420297e4aa1e3ae9b9913fa2a4d441fe5b27b4def36045182be0ec7d3c6ac483e550d886c6780bbd53152c5f25a8b7024b19f0311717ccbab569d4c6066fb5b9b3ad6d16d869c247236f78ed9b32e7934a2cd4a0c471c69cfaefb8b0c298722573df80c942fd246e81bdd709a0dd32eece922e906ad43cbd7dec3441280613b370a20c1f3b8fe908ba28eb193b22b98f81d306a588ef8307182568a4d11e19137d47e734c68b4784585dd91978103e07e12a36ed803c074c4cf487db9063ff8e79dcb14f981263ff98bf9f297d31112d14cf7462dd41a87d3215f64d530a2dee033490880cd8d303f596bf706ac43120caeb6b92b9b85188bf7f2f1a9a03ab564593d662212d5f23b92fb62634726629a429064de0c924b0256ea7006032b7aaf1fd0a345e3e0552ee97405c62910de346c8dfb6e5089b9cca024a3ca5630ceed5f67a3e570aa9739167fce384f1f1e8b70434f703cebfc300e67253331891d1e9d01f8b94fdf9f8136c73e282fb53a682cbac82ea2e9372a27d2140c510666cd6b59b4876237aa8c8ab0d05b607c0d977d6388170da2310d52e19e27f51a971a16021cae6359317f811ac4184fcf96703f543c758a63bde18f8c871a03a4662644d39be66237cc7ebddce3b06957e40b6b0019ddef8ec6efa8c1c32a4b988fc8e9d1271bf9d65540bb5c534d4080e03f988b46a5defa56b3c9fbd5a267f2314cd895e60da8bb78d359912268c185c62babbd04d8e3f0f0e1eea2585dfa17daed7f967f60c94b8e5bdb080d56d5b524bbcca7ac3bf9d3c424149d34e8ad59660510a4c6a305006e343fe4592187e6b81cef8ccc50d5272fb2ba66c60c33c6ceef247b5fed910e9a0ade059c1b9b2086c7f19596c3a8ef9f0e555c4600819cc371e67d8cfe08eab0a46c07d21191d9ebd8cdec0fd520a95e6b23244854fab002a5c1c4f35c90fa3696158c80782b2b5b293fc219ee34cd857296de91e3c4fbacd13a4d54351bf753f1cf600111fda5199333355c2f21510505fc43aad2749738e86df40915aa7e61652880ea5d6d7cc37aa8acd5978bd1cb37da1dbf477a24b08b362eff12681b8d4c90cfba058b5125814bd3fdd2f55b62310c5286089642ef727ac791b122ab9033b8f07c408aa50adcfc6bbd0f70bb812b12ad82e2bffb95e73ed401a45fc266ec278b1f39b4155f19b6a598d8864ad9ce79434c4c13ce502d085feaa6c54195479d3f45d61f3443d9dd1ad14434a8501393ba094f6bd040eaece2e0059afdc3eccf115d75584b9f7682b72b4ba5a21036294cae9fcd18492897e656d8a72d06e0a26205056bfa15da5a2b4687ae5ecb7c93f87e1fd5c8935b26ea10a46d55441dfb4474d9cca1ca41658d7824326b9b32cc14a0f49ff991643f95f2372c8a41efa1e89aa472fe115efd9d7e7261e438609cdbc7d3ccdd7d856feaa7b1da1dce516f08286270857a62d24dc4942784b3524b1e5651c1c6e42706818a6b7efbd67373cf4b69eb7f98551d896079e42a15513cf3de032aad2950f436582bcd6e3fc021a9948700e0489461125e0c0248859b4dcb0398a00ad01093c0da550e4a186d16a28c9de9857dd227c5ad78a0127315deb5e7e431f5cfba3db352f0a1ab35b7a61608b23ad9e49849e5e395dc15233c06f925f7278b68ae4e1376c57f5f8510f2a3f357c15e06ce5aec72205ac748dca3f60cbcf78e40ec6be6b93509a50edcb9de76348ae676d5cc483dc124d8f39463c63278c2ea4585c6c957671eaf3ba4c2fa155021b8b5b3a9c13db69b3c4117b1652fb913bc9d6b94154c676b85cbd929bc63ad5f21d6bd9d15256f3a583c5ec6930db8f0b2e94284b0058dc890e129996d98d83d9795da1c4c4e7027302e7af91a852a1b37986e6fea75dd06adbbb422ec4fc9d94aa99b2add89f9ce800ee2b7f34535a4a834a6497c021df3825d6a21fe7ac0b547990befc882db61ef6735d456c758243428a647fd807246f819d894ddd46334f0f4ec3364cd5c39221fe6290cfd6873483e62ce7c1b1c967258d5eff7fde4ec0e0e7ceae52f8b42bc528e18ce79f700162b6fd8dd4c61af7fdaa20cde455d8c587cda3e21f3f5a3f830833f5f3509f09a70201ba08bd8a05620c24eb8c991f08d28c75df9bde8192229ec13b6bb8c4c6fea658a8c206553b893ba4fc755e284c8bfaf95d034a4580df24e072292f3100b50a958c4fb88fa66aabe1747fa096c56dd005f3428c76554827128df40c30b780d4f24bcedbffd190d47fd5fdea73d6e3af52d6698989459249ddf21890acf00093253e323c877e003a0aec8ee479dffc1807e26e17eedfbc58b94fb1635221bd88c59001aafddcc9ee8874a8a1b7894c4ad16d1abdf0e4c3d54826bae7fcc3b76958018c0010d809a79f90af635eb39ec680065a46fc293fb30125b3ea0332dc84989bd75bb0eec901c592000ef71b2758d157d618758df7cb7f7dc0e4c4233e856298411b2269d9aa6c5adddb540dbbb6946806d33aff1e479457323815ff0a7e3b640575361411aec605d1953b5beab3c9218220ee94abd39418b84d5c68dffea3e6d0e0d4f286773d5c394156e234bcaca8e7befea1b5e3f08c0e91c85cebe0f518955b0e498146f8e3e2d02a4aeff5f07d1db3a1119552928f11ef6edf12fda37f35143d7f7415029373ad21eeceb7f4debfd89517300708979cd004e47b0f49a0b7773987d59535ea39dfd2480d5dd29601560712be155f40f424c0ff049461b1d1690fabc1b0ae2e64f981c48d1602eafc3858cec557d7946ff112239a8b0f0f303742dcb9d217d1fd3b0ec5faa39d234f4fef9b10a0a8e7074551b29cdbd831d8df7cacb4d7e21ac5dac8dd44bfa134ccf0732a80fb73cb5a8a83d6c7a57260a7f32f73b5f8fee0c315c0b6d15997c056a77dc27d6ad92a77152135b75b3d10e24663b3c8b47cbd3c635e52a7afbb0c3fcc71e7f3177b1c9001924d3e19c2bac55786b9589c3581716ced5fbeb322130a40cfba70dcce62bafc662b98fa9a6993cea27ef2b7bae22200f69c2904f617b5bf3715c4ff3718104ad9c98a797e137fe541afb315bb9b3c93c460df553017be33a0f3ace8b29df767e5c2f2121200bc5445f3b1df7e194a793c8cbb42e02644e528752ec9a166216d0d20fb7db92d5cc365c6a456baf3a2309bd30e05b8f9de403bef67101bc50b6eb391a4b5c0dc1f1d5e0a7e1e00f61d9d0de990ba0dbdd3cb233c3f3ae112bd5afffe2dd33e67c3fc575e4900e310873ca7fd0950597385f4deedce71c512c5d1d71e3d34337077ba1d5fadeaf55e1334831e11d2d9d619724f833361794d6518887747968b5ae0903176290e5f818d2698930592fb879e28f7293ad00fe094f853c21ff5aa690ecb28b04ca6e308afc5edb448cc36c7b797b43a2ae9abdc4ae8873f2dbc77c4e7b26ce80c2d442f24da342d0df697acb79059bc20ac9eabf95a7415b1f5ecbad7dcc4084cf9ce7ba6ef4e94bc14ba85cad881291961d95ccd81e72cad4360b73056c188919e795c9fdeb12ffaf609df3eace3588d65b3f3eec233fd740d7f08b9fb4fd7eff1b1df01a2c70a86b6b416289349afeec26b81cff196c2e065c405c965cd38a1aca14addc61ed4d454703f9103f28b5212c70f39fd9aa313ffe4d9ed8786d5470f1975372e7a8e409932f6874f0838ed51019ca0d9fee46e734c6d3b41d3642ec0b83753ecaa0f587c178309cde5e7355a1c039dd581af366eb1af092a7a04e9969780e314be6670ba61a991690f7ddee0133f1f25788bbe955697099504e82336ad3916b9473125ecc8d6287d39a07cc586bb0a55a741098c447559cfbf82eea35290a097561ca48ef80dd4ea7d519935f9f9fe4678f9658099c42d1fdc3941e7bba0bbf60fd29259aa51c0a7e4241bf70b730d6e2966cfa20b69dc7462447c5d8a096f2903637f378c6baf9aa3bff9f0ab8061fbc111f7bd6ea406533f6673e9500be8a7f8c48420d0ac29a777851d2f4188d663e2d28f1f09084b9a47ec6a732ce9bc6cdcd5b8dcf8c65014e3fdd0a7589737ede05b18ce2f2ca8e5633308b297f830af6055ded72d94515da3092260c62161d71bb112541cd26ad62a3d50f297a4029b334a7889a0e51b33cdf71317800f0571942c233e3cbf05f1fc009d220b9a4f3abcdf26c2086544f345a18a5fc525d657cd4d3ee71bdd864f104fe8b7ceb4cf321a94d88fa8c49a7d88a81ea49eef47b305319d981065bd907db191c3803c9803da67f09e65ed478b0079d2f2a08ff1782cc5a8c5a70a46a95221cd239a962c7518b907cdeb11a47e031c02a7b10f5e8a677a4d58c8d8bdfb76b131c80d0692b2a7306ed059977febc17317a3e9813aa5bd40d197f2f50b3d9ea649f373a81696c4384c32c9fdbac45af2395d9e168eca8674196bc488a725a559deb63a764cb557ef02123c852d318eaa5af32ad88cf31b54cec3e7dba9d2a51916102ae1bb85da756a833aeb329d8a71c44022715bc878d292c4fe2883b725cb32f095996f96b33e11189881f4dbba2ff61388b608d9994b3e3aabe5c34d6ea3a4c1094fe05660e9374476d2d15b654631e6355c0cc79c29317fcf5acb4d8952158cc6f467279fec69248b0f2502229746edf6f3b3b0fe475d9aa1429c8ffa3a53403d41a8b5c5074d5b896d1abbfdbb3c142a60eba1c25041797b07374563ebcf59d08810d99001d8634e6a83bf35aa004c2f93a1d9818c9b9f55220ab910f60ce5a07c3871f4b8dc7bd24ec63d38f2090a5e48f8b8ca27f1875460877ba6ecee3506a94f118e7c93e32ec2e97761238a1e16f7a0059981fdc5672a4fe8f462c7567cf5b4d71f90afe728c9cdc8a26c49556e4fa083c8242c209637a91e244bacbc88552ad543ae248fd826efba38f74c88ff03b6281f4f0e0c5c5fe13972dbdba4f30bf4e2c84d52ce971e201aec9c772a6cd2671c17aa46093ccf17bf18c61e796c193b934a1a1feaee4615b8590695d171f0d7d4c4fe29a2b33f7d76ed6e82e5d94f47c8628df59f939d9f3d02502b68ea36fd72ee6b9a95f3aa6f05196e16101283eeb0b3d4eacdbf2521c44edfbc8a5a61951f49028f17e39d3c706158356c7297f8b7d94cb375eec27901d43d9c7c23fa8937f27b52f9579171051559abab397f221d21411cb6206d3608ebc577cb1e21e0859a834e2449bb23be7382cdb9010ab540efb19678999fd042cba47d36f2772829360986bcfb7237664a9bc348234d0857d25fd2c3850a61bd1c9ac9ca71e9f20593e4d8b26042796f3b830517ecbafba5425a89206dbe0047d792bfe281be11487021eb72553d1527702787d61ddcf1c5c61fd7d4c18f5a4489f45c9ee574ef726e14dfa2c7b88b7e3ee47534dd28288d6062fda6b81afe2b1dc7bcb221cb5fda4fd303ade2db539353b1ffcf86b64d6b4a97c566ac90b79790e3ea7746a26c2df68e79c1e14f5549541eab2bc2e89d3509bc7a4f6ae3a4a0a2c4d9c2407f172060ed38873e3910ccef7d8e147d5243b2a25d574cd4efd233109b0d88d6b8c1200cd6a92cf1589421d9eb805fe7d1a123d123ec52d44a46a0d704a45f0e63654e9c9807ce8ea12d359553fd4b68514dfc1ad07864dbfe1bdc84a7a229abafa99944a84724a6577a21708de71da715f020892fc111092212351072f73a95a9ecb1319a97407a504e8c0c4ba838bc023dd29f41e1244fd1b6a4a555cdd53dd48c9b6f74098a5dbf1df35dc5a45fe0978af836fbd39c449e56fd0d050c83855805468e65475fa4d1e2cf3b99a8239d270614c5e203643aacefbe1ed0ecf756282697cee7ffec0fdb7d7b6c105b0166259af266b0a98846d105d8fa701bc202b7e73a3e3f88be993233755ac00fd4cca2b87e774cea0b8451c6eb5ea2e196ab4818261f96476f9738d04e6aa965cd0883a3d8c57eefe4fc559c7e1e8ff8e748953e4a254721805260db0efaf653e005a470052571cf776f585fc7041577bfb9a687fa5301be4bb4787bd6ceed9ca938c8f1e26f228eef91c00fa66502c230d554fbb27d06d680edb37fd65d67bd128af8191b959dba10b5e13508a16062d64c83f902b0540038f4e89e95ad9ae6f91c7095380bc0f3af933d2c8b09035711107c3214bc664d38fb6aa2084dbd3a0e26bc7e265796ccac2c077a1f1acefdc60511064b1b1dc71d939132dc0e11f6155e3713640a0f84b0faab19bce96160575babd4bbb66fcfd30c6e3489f87f7f996376b7a7c832573c01669b76d3192d0b7a37bdac48e551abed2f46a699e77e9407bf4507450eb865f45998ffc2c6a64a8eaad4c9a2c23f1226adc144f9168ed25985dab5dd86b166db2abb566a0a5b6540a5bce7e7dd89f4ec6fba47bb8e7b13a88115d76ca30b9b39d22e8fa9267280bb02bd2dba2f5d7abd0087372805e0c56f4fab5fa8813dd24a04349351c005c7a5c57fed425b375635f875855dc7273fb37abf6b425a2537d601b4d1ac52c9ebfa29acf00acfe4ba3bda264cf539207d455edac984eb88ea70d061163e428bb04d649048e4616a2205e9ad0970b5399c19a247abd380034ac5af2e8e7cd45385198480028e46560893d228f9181bf890ad4513ac3e51350e2762c9b4c1738f87fb0b69a5ac8819fabb43d5158ce9a954e82e50baaad1cfac0ed43f318a7ea303e4fe08e605c8c3581a53e095eb5c8eb208f883432f5a5b49877fb6301bd9eebf349d3139dbf4bdb1bdf132606f1cfd7467d64aa6c63c6ecd9e16d037c7de9b845beb58d9c52807fc1900ee5a8da2494a1049bf79fecf6c388822afd8351350a62fe84975acf7e6fc8387069d16fa33b83e91efd357bffac1dce69b4fd143017263f2b50c815d1dc098a70a67702c84b746da0e4dbf921472c0f93118916a9c07f3b31ac43f4a1b1a7574d4094bfe34b4f1a6d2df2eabed883b375cdf0c99e4437bad1baaac986a3c3534abeebc2cc6a0667e83108db75fc6600bd1be4f418b33756c8ff0f3a65258574e2bb660205704a6af5cc681fd3ff787078550457760bf41a11e28902af7bd0a97f930eacc788acd24a34cec9fd8f4ee2d37070530d905ec0f455511e94d0748fb3882de92da143890a417ad898fe60a0cf1f13e3e36aee69447b7b85c95fbd04019dcab796493a1dd711c9003016ef71c8f9d7c488d4fbf34da1cf6bfd3c5b0205a008c3689d54bea8be58d92b7802875cee796b61a8b1a2303cffff0db794d312cb252487dfaacf7e7beccc76fb7d60873b91b08bf5a14fb87849b28b3b884ff053973e1f59f52b0fc57073bb58233a00c9d9eaed36fe6e16250fa68a9f9987e50dfe4cdeb2b1142b12eabe6745362d543fe07e882ec3de8a43ec01d3e7e2d0816d038442f9d2da44f718016b9a49d96aad7fe63e378d8783ee88b15cc6203b3defd96198a92328060cdbe1eb8e2af48d8fca65054c70904d31aeedecac9adb034496e1d05983334f5482d7d02063ae83df8c71bcfae43b40c50b8c7a18ca70631a6f8a65b29ef516b465a5e60b9ffbedb56224f1699b8d1caae0ec71c0622ee69da671a826b060fd49c00fc14f593a228682c9a29b66fbd869a3c928cde7720c9e6bb589f42ba79380a984a5e9be3a102cb834a42d0440945dc89aaa4f7c9b125ca288c586ab4ba859a7e1ff899abf440a6f9eeb418acda2e7328605a773e5eae9ce160972756e361c2cb949a662faac8a7f4bb65fc2a5ee46b7d5c193758e383baa710543811363133cf87575d3904aeb154cf9ed8fa312e178b8e9f34b2216bcdc979d3dd37620c2061e095de70ff9a49a6c64239b529b944190aed28f8d0a3dc9e54e1c8e6de2bfe0ce7326fdc93409da168afa729a1f862e3acc7b36c8ae76fd3e7f7baa759efdee0e15c3f48a078553f442e7582b5e780b9c9c89fdfba713f30bc370cfbca116ac65b76e9064a81c3942a62ee8b7b4beaece4cccab769302f54711c33c182340c4b9ef053c052e11aeae2aaa563363f6333016b8ba4ce39412c225d96f362fb379d169d3d54572868ad52ede5b6db3afc3bab393d4aeede04213bf3f6bd5b16bc41b7781e123d9a051c2281ae93df2d3334367cac81fb60850b7cfa248a6b865f75e8a90d3ec8b9afdf38fa9436fd70bc9e7002152ff4db12a17fddac2918d3b426e3f77da5496aabc5d962dc31b4bc39d26a5a49ba81911223542fb18ccfea6233190daa86bc413c08dab996c59a61c6c816461a7c4569abf7adf130bfbadc94467af1e92bcf825049dfbbd36381b53614cfbde075bb27427d1c669782b763e304db3ff9f5dedfa0aec64efc676d605c0c3c3304c1c5da8023473695254418acc90df8a64ec53bc5db0d187d01b207493886318f253d38fd553aa02f273e1cdb248638bcb5c3f74154150b22b9f290e2363cf0bb161947509497712698994915063bca567e8bb2c9a74465b134102a6c29312bedcb5a002714dc852f4db39789490ee5f513e5900517a19fe37513b5ef6314dd40ab75f668f78b2ab74ccfa5b19cd1f092104578822e6b172570f5ce288bf9c3a6c7bd9ee35225aa9104cd19ad4d66de2659aa2c81311d5bcfa6eab5748849d50f1f14defae26c8dad961030af715b395de473d27988491816a28fb21fa3e99dfe06ab484ff9c0c5211eba9f93432c0b3c141206563809833ac8a72928895de8107f876466b16c84859e54fe6d46549dd28d1e5c3bfe823deb212d6dfd829057d624a53d52b12be9d3e2e7484fe2318e90b00fc561e308ceb2394b7dfb0d0a6c6781b24cd9d53a947fc3e44908b3171444e1d0e4e52b12220c8f51a44f0b6522990edc890500c08cd1e47be96079444355b91cfeba88bb83de64db3fbf53c44df8abd8cd126e2945768a60dfefa6e97878c9eb548bd91d0ba4dfc5d60ff91ef1194ab8828784c689f61760daa82df643811cfb6a3aa8e2185adb8684be1bd156950d019726d9d9177ca5ac4f850c20ac350adcfc1fae8a7538ee28787dabe89b7ab275c45b5ce0aa528ec2e24477adcde86aa0f21965faefc4f4cc887a70b44a84ab1e97318266d77a87423235cbe194339a81660058f8f758632d5359ce94a754462dad3688c5a676832882a440a21d919af3052069401bb044ad9d55ec9466e4aa82aea9c25adab7ad25e67812f888f23657e0377c1f69671ba82e7d7bad0bc0d72951c13828b6080eab2e623b6a5ac865204c3d2744fcd6a2aa404ce18378b880f2492597595875b8f54027f7d4e17ccead4a9658c073d9739bec4c21e847fa34dd08d5f732be871ede9ef78e33cc703db33376c64d7dc1df47656a3b6894fdcd6d35abdf5a257524fb6712bba79962b84c0aeaa465fc6c0c92a96acb6d802da7b87a98652acfab06e1090b010ad7e0e8149b8a5e7d9c84a2e2891dd5c93df389692516ec0bc93328173fac0961d2df8dbc3d1c9e4975d5ee62fe4cd8ab1a336ea41a6e6a38201f34215fdf7a4004aaab5b9f8b137f877dfebbd5ea85ca63f2c985eba5ce9797ec4619b508810903e857b7a573e3e9e77fe4e3e5e8f951d3e76f6f409a81775a15712ce8ac37e9cadb607a22d37bcc3c17e22c5c06239f1b2c58237c8d131f1c20bfe5d38014372d8a020e168685b84e631e8e28950e22cc43814c6f83d5c7491f3afc578e77753b50137dfacd9a282f21ab91767d7c7bf79c1e201ed6b47414b162ccff1d05cc1cff82ac6d44d561fa83cd09de0d903141463a23f51703553eb8a0de47401a5d97184f45f4d505119a983b79535379cbeeea132602750ac7138c55496f2c6c9571b6843363abfecf20bc87cadd77c01595cc0311176d304773efb15d527498f4cda0037a1216113212aa95aa7f7641f9b9b00141f6a2a269088a37fc0e95227eb02c70d2643951ff3710ddadba4fc11bfb345d2b87a05e07ae5b3c42f51e40b59c90fd48be5b2ebfac647ada4102064aa42f92035077e880da41fcdb4965d770bbe421083e06e303182cfcf1b1efae811c1efb2fac67f58d168267048079266db3a79e3512d02cc95de336a25f63ad51b9a357395ffcff8a7cb916b17ff17cfdcb049661a2ad6df4f8ba394c7924b7f18a92630e3e6a44103edab81e6755423cda78b29dc53955ce240b6a50f52118776618f99000f7db0dbebc698afe10379134929e3bb73e69852b0afc9cba264fa7f329615b9fdfd5cbcf4ebc999c4f0bf7d0b0c8896bae81671eeee2d46dbae34417811a76b377b2d30f7bec55e4e12c946cb7c04768eafafe624cf8c5e2800eb33bdda2fa37d8a29bae5c6374914c65279e487bf440bf93ce24461d0fc196c99e483313e76e958d0250c7acdfb7f665f9d9920516abc3f42dec45698877b465deb995eab688afaf9060aaea73cba7fca597fa1ea22a6f754637fe18374cb96ea534f3a7d6dcc1ad72b74d57d4d78d9fc305043ca28788ea19408bf43d5a5998122bf5cb9120242ca99cead3a42d5db5aa2290b4b643ea6870e746a01c567ccb2bd0791d4b01fcf370db1257d851eddeed92d172415015697c5ec7f9f4fd5ac240198530fa7070dba9a7102414051113f42980ef729416d882eb2453bdb7a82cbe1444a2b4682a4fba6a1fc840c5f1475853b0611870d9e7c7b3a2efadb8950eeb42e4cb2c15e925f0758e2c284eae5eaf54bda8d1e6a14322ca518297123074138eab98fc48a61335f55ff244911937e61cd77f6243d409412e5ced69cdd23e440af341c40d4c47801d2d87e03d85ae06ae2e7425607b23cb012c648dcb3a597d20d2b8984d384561085c7ca42fec74706dea88db591c5d601a0d656572888058aec085f628082c7cfb30ab7ef620c4822d0d28773742c1d15c268aaef28f81ea025a1d544efe977d01f40aa852c76ca8c2e46c7a3941bb252eecb352b7e4789f762659d425fc52b8fc87d1a2a25f933eab44d20cf0143d14fa529c9933e67843ad38417d4e1c53302257a7fe146994a55ce733ab4213761c3c98ad44c9002442ae939d201c4ee7e21939b0d048fdacb48344edd35deda8be7dbc40d57114849e866420ef15eb8cc70de5d160dc8dc196e1177901a8ac69cbf5731225304429a77f24ce9eaf4edf2601e1e8a1c4286baa34b5a1d1b037eb627c14a9afb66394addbfd5e4383ac102b74f85cfa76f734a17d41ae905bf4e8f58ef3d9b9a5e5c3abdb57b1bebae4aadf2070087eb378c48d1413792636f4c4b24025e50107c53495fbc1e19efb1e08fad26081f22972abc5abd6238217b146f1598c1b87bd3a3063a96611571bbaec53d5fb9bc2fb390631bfe33f8cd18f9b6d428231b03fd592c2ae28da7cf603b8179853b8c62af0a86ca27037120082183591be3890973fc3a6da314f0b054cc0ceb4d10c0afb6a938163ad8a9b2e4e12ec443c3646c0dac5d1d2efa93fde2ff01f26177b26eb04cc92512e530152b3a6a9b866bc97caa831680770f903162fc42aaef984aac222d86a88f712b828964c788e33c0687ec92e861863d0d9b34e0f7f81464b35fc10e0f74da7c4ca65c9efd3c7ea76acd8a8d432bd6e2812
+  </script>
+  <div class="hbe hbe-content">
+    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
+      <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+      <button class="hbe hbe-button" type="submit">Decrypt</button>
+      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
         
         
         </div>
@@ -501,24 +315,13 @@
 
 
 
-    
-        <nav class="post-toc post-toc-sidebar widget-wrap" aria-label="文章目录">
-            <h3 class="widget-title">
-                <span>文章目录</span>
-            </h3>
-            <div class="post-toc-body widget">
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1. 一句话总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81300%E7%94%A8%E6%88%B7%E5%9C%A8%E7%BA%BF%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BD%86%E5%B9%B6%E5%8F%91%E9%87%8F60%E5%B7%A6%E5%8F%B3%E6%97%B6%E6%98%93%E5%87%BA%E7%8E%B0%E7%99%BB%E5%BD%95%E8%B6%85%E6%97%B6%EF%BC%8Cocc%E4%B8%8E%E8%AF%84%E4%BB%B7%E5%8F%8Afdserver%E8%BF%9E%E6%8E%A5%E5%81%B6%E7%8E%B0%E9%94%99%E8%AF%AF%E5%AF%BC%E8%87%B4%E6%B2%A1%E6%9C%89%E5%BC%95%E5%AF%BC%E6%B5%81%E7%A8%8B%E6%88%96%E6%93%8D%E4%BD%9C%E5%8F%8A%E8%AF%84%E4%BB%B7%E8%AE%B0%E5%BD%95%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%B5%8B%E8%AF%95%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">2. 测试概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4"><span class="toc-number">3.</span> <span class="toc-text">3. 测试范围</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9C%AC%E6%AC%A1%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%9A%84%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 本次测试覆盖的功能模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%B8%8D%E5%9C%A8%E6%9C%AC%E6%AC%A1%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 不在本次测试范围内的内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5"><span class="toc-number">4.</span> <span class="toc-text">4. 测试策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5"><span class="toc-number">5.</span> <span class="toc-text">5. 测试执行情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%80%EF%BC%9A300%E7%94%A8%E6%88%B7%E7%BA%BF%E6%80%A7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81300%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E5%9C%A8%E7%BA%BF%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E3%80%82"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%BA%8C%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C60%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.2.</span> <span class="toc-text">5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E4%B8%89%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C30%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E5%B9%B6%E6%8C%81%E7%BB%AD%E9%85%8D%E7%BD%AE%E8%BF%9B%E8%B7%AF%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.3.</span> <span class="toc-text">5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF%E5%9B%9B%EF%BC%9A300%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%EF%BC%8C30%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8F%91%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E5%B9%B6%E6%8C%81%E7%BB%AD%E9%85%8D%E7%BD%AE%E8%BF%9B%E8%B7%AF%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E3%80%82"><span class="toc-number">5.4.</span> <span class="toc-text">5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E7%BC%BA%E9%99%B7%E8%AF%B4%E6%98%8E"><span class="toc-number">5.5.</span> <span class="toc-text">5. 关键缺陷说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-001%EF%BC%9AOCC%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E4%B8%BA%E7%BA%BF%E6%80%A7%E7%99%BB%E5%BD%95%EF%BC%8C%E5%B9%B6%E5%8F%91%E9%87%8F%E8%BE%83%E5%A4%A7%E6%97%B6%E6%98%93%E5%87%BA%E7%8E%B0%E7%99%BB%E5%BD%95%E8%B6%85%E6%97%B6%E3%80%82"><span class="toc-number">5.5.1.</span> <span class="toc-text">BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-002%EF%BC%9AOCC%E5%90%8Cfdserver%E8%BF%9E%E6%8E%A5%E5%8F%8A%E5%90%8C%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%E8%BF%9E%E6%8E%A5%E6%98%93%E5%87%BA%E7%8E%B0%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF%EF%BC%8C%E5%AF%BC%E8%87%B4%E6%B2%A1%E6%9C%89%E5%BC%95%E5%AF%BC%E6%B5%81%E7%A8%8B%E6%88%96%E6%B2%A1%E6%9C%89%E8%AF%84%E4%BB%B7%E7%BB%93%E6%9E%9C%E3%80%82"><span class="toc-number">5.5.2.</span> <span class="toc-text">BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG-003%EF%BC%9A%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%E8%AE%A1%E5%88%86%E5%AD%98%E5%9C%A8%E4%B8%8D%E5%87%86%E7%A1%AE%EF%BC%8C%E5%B7%B2%E6%93%8D%E4%BD%9C%E7%9A%84%E6%AD%A5%E9%AA%A4%E6%9C%AA%E8%AE%A1%E5%88%86%E3%80%82"><span class="toc-number">5.5.3.</span> <span class="toc-text">BUG-003：评价系统计分存在不准确，已操作的步骤未计分。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">5.6.</span> <span class="toc-text">6. 测试环境与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0"><span class="toc-number">5.7.</span> <span class="toc-text">7. 风险评估</span></a></li></ol></li></ol>
-            </div>
-        </nav>
-    
-
 
     
         
     
     <div class="widget-wrap" id="categories"
         data-category-mode="external"
-        data-tree-src="/assets/wikiflow/category-tree.3b50715e1920.json"
+        data-tree-src="/assets/wikiflow/category-tree.e8ecc70f400d.json"
         data-current-path="/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/"
         data-root-url="/"
         data-fallback-url="/categories"
