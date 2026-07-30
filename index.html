@@ -1,802 +1,657 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 8.1.2">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+    <meta charset="utf-8">
+    
+    <title></title>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    
+        <meta property="og:type" content="website">
 <meta property="og:title">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+    
+    
 
-<link rel="canonical" href="http://example.com/">
+    
+        <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="container">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header id="header">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header-main" class="header-inner">
+        <div class="outer header-main-inner">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title"></span>
+            </a>
+            
+                <nav id="main-nav" aria-label="Primary">
+                    
+                        <a class="main-nav-link is-active" href="/">首页</a>
+                    
+                        <a class="main-nav-link" href="/archives">归档</a>
+                    
+                        <a class="main-nav-link" href="/categories">分类</a>
+                    
+                        <a class="main-nav-link" href="/tags">标签</a>
+                    
+                        <a class="main-nav-link" href="/about">关于</a>
+                    
+                </nav>
+            
+            <div class="header-actions">
+                
+                <div id="search-form-wrap">
+
+
+    <button type="button" class="search-form-trigger" aria-label="搜索" title="搜索"></button>
+
+</div>
+
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container" role="dialog" aria-modal="true" aria-label="搜索">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." aria-label="搜索" />
+            <button type="button" class="ins-close ins-selectable" aria-label="Close search"><i class="fa-solid fa-circle-xmark"></i></button>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
 
-  <title></title>
-  
+<script src="/js/insight.js"></script>
 
 
 
 
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title"></h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/" class="post-title-link" itemprop="url">网页版接发车性能测试报告2026_07_27</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-07-27 00:00:00 / 修改时间：20:01:15" itemprop="dateCreated datePublished" datetime="2026-07-27T00:00:00+08:00">2026-07-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3/" itemprop="url" rel="index"><span itemprop="name">测试文档</span></a>
-                </span>
-            </span>
-
-          
-
+                
+                    <button id="mobile-menu-trigger" class="mobile-menu-trigger" type="button" aria-controls="mobile-menu-panel" aria-expanded="false" aria-label="Menu" title="Menu"></button>
+                
+            </div>
         </div>
-      </header>
+    </div>
+    
+        <div id="main-nav-mobile" class="header-sub header-inner">
+            <nav class="outer mobile-menu mobile-menu-primary" aria-label="Mobile primary">
+                
+                    <a class="main-nav-link is-active" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+            </nav>
+        </div>
+        <div id="mobile-menu-panel" class="mobile-menu-panel" hidden>
+            <nav class="outer mobile-menu-drawer" aria-label="Mobile menu">
+                <span class="mobile-menu-heading">Topics</span>
+                <div class="mobile-menu-list">
+                    
+                        <a class="main-nav-link is-active" href="/">首页</a>
+                    
+                        <a class="main-nav-link" href="/archives">归档</a>
+                    
+                        <a class="main-nav-link" href="/categories">分类</a>
+                    
+                        <a class="main-nav-link" href="/tags">标签</a>
+                    
+                        <a class="main-nav-link" href="/about">关于</a>
+                    
+                </div>
+            </nav>
+        </div>
+    
+</header>
+
+        
+        <div class="outer">
+            <section id="main" tabindex="-1">
+        <article id="post-performance_report_20260730_112055" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3/">测试文档</a>
+    </div>
+
+
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/" rel="tag">测试报告</a>, <a class="tag-link-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a>
+    </div>
+
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/28/performance_report_20260730_112055/">
+            <time datetime="2026-07-27T16:00:00.000Z" itemprop="datePublished">2026-07-28</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2026/07/28/performance_report_20260730_112055/">网页版接发车API性能测试 - User_LogIn接口报告2026-07-30 11:20:55</a>
+        </h1>
+    
+
+
+            </header>
+        
+        
+
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="API性能测试报告-User-LogIn接口"><a href="#API性能测试报告-User-LogIn接口" class="headerlink" title="API性能测试报告 - User_LogIn接口"></a>API性能测试报告 - User_LogIn接口</h1><blockquote>
+<p><strong>测试时间</strong>：2026-07-30 11:20:55<br><strong>测试服务器</strong>：192.168.1.195<br><strong>测试工具</strong>：协程并发阶梯测试 v2.0<br><strong>每级别请求数</strong>：300<br><strong>并发级别</strong>：[1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]<br><strong>批次间等待时间</strong>：10秒<br><strong>日志文件</strong>：logs&#x2F;test_20260730_104521.log<br>此测试结果由于每个级别间间隔时间较短，导致前一级别实例还未全部析构印象下一级别的响应结果。</p>
+</blockquote>
+<h2 id="1-硬件配置"><a href="#1-硬件配置" class="headerlink" title="1. 硬件配置"></a>1. 硬件配置</h2><table>
+<thead>
+</p>
+        
+        
+        
+        
+        </div>
+        
+            <div class="article-more-link">
+                <a href="/2026/07/28/performance_report_20260730_112055/#more">查看更多</a>
+            </div>
+        
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+        <article id="post-网页版接发车性能测试报告2026-07-28" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3/">测试文档</a>
+    </div>
 
-      
-          <h1 id="1-一句话总结："><a href="#1-一句话总结：" class="headerlink" title="1. 一句话总结："></a>1. 一句话总结：</h1><h2 id="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"><a href="#系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。" class="headerlink" title="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"></a>系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</h2><h1 id="2-测试概述"><a href="#2-测试概述" class="headerlink" title="2. 测试概述"></a>2. 测试概述</h1><table>
+
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/" rel="tag">测试报告</a>, <a class="tag-link-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a>
+    </div>
+
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/28/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A2026-07-28/">
+            <time datetime="2026-07-27T16:00:00.000Z" itemprop="datePublished">2026-07-28</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2026/07/28/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A2026-07-28/">网页版接发车性能测试报告2026_07_28</a>
+        </h1>
+    
+
+
+            </header>
+        
+        
+
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="1-一句话总结："><a href="#1-一句话总结：" class="headerlink" title="1. 一句话总结："></a>1. 一句话总结：</h1><h2 id="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"><a href="#系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。" class="headerlink" title="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"></a>系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</h2><h1 id="2-测试概述"><a href="#2-测试概述" class="headerlink" title="2. 测试概述"></a>2. 测试概述</h1><table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>网页版接发车性能测试报告2026_07_28</th>
+</p>
+        
+        
+        
+        
+        </div>
+        
+            <div class="article-more-link">
+                <a href="/2026/07/28/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A2026-07-28/#more">查看更多</a>
+            </div>
+        
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+    
+        <article id="post-网页版接发车性能测试报告" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3/">测试文档</a>
+    </div>
+
+
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/" rel="tag">测试报告</a>, <a class="tag-link-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a>
+    </div>
+
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/">
+            <time datetime="2026-07-26T16:00:00.000Z" itemprop="datePublished">2026-07-27</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/">网页版接发车性能测试报告2026_07_27</a>
+        </h1>
+    
+
+
+            </header>
+        
+        
+
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="1-一句话总结："><a href="#1-一句话总结：" class="headerlink" title="1. 一句话总结："></a>1. 一句话总结：</h1><h2 id="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"><a href="#系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。" class="headerlink" title="系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。"></a>系统支持300用户在线使用，但并发量60左右时易出现登录超时，occ与评价及fdserver连接偶现错误导致没有引导流程或操作及评价记录。</h2><h1 id="2-测试概述"><a href="#2-测试概述" class="headerlink" title="2. 测试概述"></a>2. 测试概述</h1><table>
 <thead>
 <tr>
 <th>项目名称</th>
 <th>网页版接发车性能测试报告</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试版本</td>
-<td>v1.0.0</td>
-</tr>
-<tr>
-<td>测试环境</td>
-<td>[测试环境描述，如：Windows 10 &#x2F; Chrome 151]</td>
-</tr>
-<tr>
-<td>测试负责人</td>
-<td>[曹淼]</td>
-</tr>
-<tr>
-<td>报告日期</td>
-<td>2026-07-27</td>
-</tr>
-</tbody></table>
-<h1 id="3-测试范围"><a href="#3-测试范围" class="headerlink" title="3. 测试范围"></a>3. 测试范围</h1><h3 id="3-1-本次测试覆盖的功能模块"><a href="#3-1-本次测试覆盖的功能模块" class="headerlink" title="3.1 本次测试覆盖的功能模块"></a>3.1 本次测试覆盖的功能模块</h3><ul>
-<li><input disabled="" type="checkbox"> 模块一：[occ登录]</li>
-<li><input disabled="" type="checkbox"> 模块二：[单机版开课]</li>
-<li><input disabled="" type="checkbox"> 模块三：[联锁页面操作]</li>
-</ul>
-<h3 id="3-2-不在本次测试范围内的内容"><a href="#3-2-不在本次测试范围内的内容" class="headerlink" title="3.2 不在本次测试范围内的内容"></a>3.2 不在本次测试范围内的内容</h3><ul>
-<li><input disabled="" type="checkbox"> 模块四：[其它模块]（重点测试了性能问题改动风险大的模块）</li>
-</ul>
-<h1 id="4-测试策略"><a href="#4-测试策略" class="headerlink" title="4. 测试策略"></a>4. 测试策略</h1><table>
-<thead>
-<tr>
-<th>测试类型</th>
-<th>执行情况</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>功能测试</td>
-<td>⏳ 进行中</td>
-<td>[基本功能满足演示邀请，单系统功能还在持续开发，功能测试也在持续开展中。]</td>
-</tr>
-<tr>
-<td>性能测试</td>
-<td>⏳ 进行中</td>
-<td>[重点功能已完成测试，且有明确测试结果，后续持续跟踪问题修复进展，及完善测试场景]</td>
-</tr>
-<tr>
-<td>兼容性测试</td>
-<td>⏳ 进行中</td>
-<td>[重点测试chrome浏览器，firefox和liunux版本浏览器确认存在问题当前版本不支持]</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>测试工具</strong>：[python定制化开发接发车系统并发测试工具，grafana、prometheus]</p>
-</blockquote>
-<hr>
-<h1 id="5-测试执行情况"><a href="#5-测试执行情况" class="headerlink" title="5. 测试执行情况"></a>5. 测试执行情况</h1><h3 id="5-1-测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。"><a href="#5-1-测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。" class="headerlink" title="5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。"></a>5.1 测试场景一：300用户线性登录系统，验证系统是否支持300用户同时在线登录系统。</h3><p>测试结果：300用户并发顺序登录系统，平均登录耗时1.99s，最大耗时2.38s，最小耗时0.05s，总耗时597.13s。</p>
-<p>测试结果记录：</p>
-<p><img src="/images/image-20260727162808069.png" alt="image-20260727162808069"></p>
-<p>支持300用户在线登录：</p>
-<p><img src="/images/image-20260727163049417.png" alt="image-20260727163049417"></p>
-<p><img src="/images/image-20260727163103745.png" alt="image-20260727163103745"></p>
-<p><img src="/images/image-20260727163124934.png" alt="image-20260727163124934"></p>
-<p><img src="/images/image-20260727163148230.png" alt="image-20260727163148230"></p>
-<p>资源占用情况：cpu，gpu资源均未利用率均未超过80%。</p>
-<p><img src="/image-20260727163423550.png" alt="image-20260727163423550"></p>
-<h3 id="5-2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。"><a href="#5-2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。" class="headerlink" title="5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。"></a>5.2测试场景二：300用户模拟真实并发登录，60用户并发登录系统，观察系统响应时间及资源利用。</h3><p>测试结果：60用户并发登录时，平均响应时间167s，最大响应时间338s、登录总耗时1586s。</p>
-<p>结果记录：</p>
-<p><img src="/images/image-20260727164027653.png" alt="image-20260727164027653"></p>
-<p>300用户可以登录成功：</p>
-<p><img src="/images/image-20260727164734351.png" alt="image-20260727164734351"></p>
-<p><img src="/images/image-20260727164808186.png" alt="image-20260727164808186"></p>
-<p><img src="/images/image-20260727164841923.png" alt="image-20260727164841923"></p>
-<p><img src="/images/image-20260727164909882.png" alt="image-20260727164909882"></p>
-<p>资源占用</p>
-<p><img src="/images/image-20260727165009172.png" alt="image-20260727165009172"></p>
-<h3 id="5-3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"><a href="#5-3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。" class="headerlink" title="5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"></a>5.3测试场景三：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</h3><p><img src="/images/image-20260727165226219.png" alt="image-20260727165226219"></p>
-<p>资源占用:</p>
-<p><img src="/images/image-20260727165432090.png" alt="image-20260727165432090"></p>
-<h3 id="5-3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"><a href="#5-3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。" class="headerlink" title="5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。"></a>5.3测试场景四：300用户模拟真实并发登录，30用户并发登录系统并持续配置进路，观察系统响应时间及资源利用。</h3><p><img src="/images/image-20260727171614465.png" alt="image-20260727171614465"></p>
-<blockquote>
-</blockquote>
-<hr>
-<h2 id="5-关键缺陷说明"><a href="#5-关键缺陷说明" class="headerlink" title="5. 关键缺陷说明"></a>5. 关键缺陷说明</h2><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。"><a href="#BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。" class="headerlink" title="BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。"></a>BUG-001：OCC登录接口设计为线性登录，并发量较大时易出现登录超时。</h3><p><img src="/images/image-20260727172829672.png" alt="image-20260727172829672"></p>
-<h3 id="BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。"><a href="#BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。" class="headerlink" title="BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。"></a>BUG-002：OCC同fdserver连接及同评价系统连接易出现连接错误，导致没有引导流程或没有评价结果。</h3><p><img src="/images/image-20260727172810749.png" alt="image-20260727172810749"></p>
-<h3 id="BUG-003：评价系统计分存在不准确，已操作的步骤未计分。"><a href="#BUG-003：评价系统计分存在不准确，已操作的步骤未计分。" class="headerlink" title="BUG-003：评价系统计分存在不准确，已操作的步骤未计分。"></a>BUG-003：评价系统计分存在不准确，已操作的步骤未计分。</h3><p><img src="/images/image-20260727172429057.png" alt="image-20260727172429057"></p>
-<hr>
-<h2 id="6-测试环境与配置"><a href="#6-测试环境与配置" class="headerlink" title="6. 测试环境与配置"></a>6. 测试环境与配置</h2><table>
-<thead>
-<tr>
-<th><img src="/images/image-20260727173014860.png" alt="image-20260727173014860"></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173155084.png" alt="image-20260727173155084"></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173353303.png" alt="image-20260727173353303"></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="/images/image-20260727173449852.png" alt="image-20260727173449852"></td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="7-风险评估"><a href="#7-风险评估" class="headerlink" title="7. 风险评估"></a>7. 风险评估</h2><table>
-<thead>
-<tr>
-<th>风险项</th>
-<th>影响等级</th>
-<th>缓解措施</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>支性能测试未覆盖所有功能</td>
-<td>🟡 中</td>
-<td>后续持续优化更新测试场景和测试数据</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<p><em>报告人：[曹淼]</em><br><em>审核人：[曹浩波]</em><br><em>日期：2026-07-27</em></p>
+</p>
+        
+        
+        
+        
+        </div>
+        
+            <div class="article-more-link">
+                <a href="/2026/07/27/%E7%BD%91%E9%A1%B5%E7%89%88%E6%8E%A5%E5%8F%91%E8%BD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/#more">查看更多</a>
+            </div>
+        
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
 
-      
+
+
+    
+        <article id="post-配置多个实例sql" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
     </div>
 
+
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/" rel="tag">数据库运维</a>
+    </div>
+
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/">
+            <time datetime="2026-07-20T09:02:00.000Z" itemprop="datePublished">2026-07-20</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
     
+        <h1 itemprop="name">
+            <a class="article-title" href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/">SQL Server 批量添加数据</a>
+        </h1>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
+            </header>
+        
+        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/" class="post-title-link" itemprop="url">SQL Server 批量添加数据</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-07-20 17:02:00 / 修改时间：17:03:57" itemprop="dateCreated datePublished" datetime="2026-07-20T17:02:00+08:00">2026-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>配置子服务器下多个用户实例数据 01 OCC 02 fdserver 03  04 评价系统<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 1. 备份表（强烈建议）<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>SELECT * INTO dbo.SystemInfo_Backup_90300_90399 FROM dbo.SystemInfo;</p>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>配置子服务器下多个用户实例数据 01 OCC 02 fdserver 03  04 评价系统<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 1. 备份表（强烈建议）<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>SELECT * INTO dbo.SystemInfo_Backup_90300_90399 FROM dbo.SystemInfo;</p>
 <p>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 2. 设置固定起始端口（端口将从 61001 开始）<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>DECLARE @StartPort INT &#x3D; 61000;   – 实际端口为 @StartPort + n，n从1开始</p>
 <p>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 3. 开启事务（便于回滚）<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>BEGIN TRANSACTION;</p>
 <p>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 4. 生成 400 条记录（100个实例 × 4条）<br>–    实例号从 90300 到 90399<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>WITH Numbers AS (<br>    SELECT TOP 400 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS n<br>    FROM sys.objects a<br>    CROSS JOIN sys.objects b   – 若不够可再加 CROSS JOIN sys.objects c<br>)<br>INSERT INTO dbo.SystemInfo (<br>    ID, SystemID, Name, Remark, McastList, Address,<br>    RecordTime, Status, port, address_udp, port_udp,<br>    IsKeySubSystem, 位置X0, 位置Y0, 位置X1, 位置Y1,<br>    显示图片, InitStatus, ip, UnitNo, SystemType, SystemSubType<br>)<br>SELECT<br>    NULL,   – 假设 ID 为自增列<br>    (90300 + (n - 1) &#x2F; 4) * 100 + ((n - 1) % 4 + 1) AS SystemID,<br>    N’服务实例:’ + CAST((90300 + (n - 1) &#x2F; 4) AS NVARCHAR(10)) + N’_索引:’ + CAST(((n - 1) % 4 + 1) AS NVARCHAR(10)),<br>    NULL, NULL, NULL, NULL, NULL,<br>    @StartPort + n,   – 端口从 61001 开始连续分配（61001, 61002, … 61400）<br>    NULL, NULL, NULL,<br>    NULL, NULL, NULL, NULL,<br>    NULL, NULL,<br>    ‘10.1.12.132’,<br>    NULL, NULL, NULL<br>FROM Numbers<br>ORDER BY n;</p>
 <p>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 5. 验证插入结果<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 5.1 检查记录总数（应为 400）<br>SELECT COUNT(*) AS 插入条数<br>FROM dbo.SystemInfo<br>WHERE ip &#x3D; ‘10.1.12.132’<br>  AND SystemID BETWEEN 9030001 AND 9039904;</p>
-<p>– 5.2 检查是否有重复 SystemID（应返回 0 行）<br>SELECT SystemID, COUNT(<em>)<br>FROM dbo.SystemInfo<br>WHERE ip &#x3D; ‘10.1.12.132’<br>  AND SystemID BETWEEN 9030001 AND 9039904<br>GROUP BY SystemID<br>HAVING COUNT(</em>) &gt; 1;</p>
-<p>– 5.3 检查端口是否重复（应返回 0 行）<br>SELECT port, COUNT(<em>)<br>FROM dbo.SystemInfo<br>WHERE ip &#x3D; ‘10.1.12.132’<br>GROUP BY port<br>HAVING COUNT(</em>) &gt; 1;</p>
-<p>– 5.4 查看端口范围（应是从 61001 到 61400）<br>SELECT MIN(port) AS 最小端口, MAX(port) AS 最大端口<br>FROM dbo.SystemInfo<br>WHERE ip &#x3D; ‘10.1.12.132’<br>  AND SystemID BETWEEN 9030001 AND 9039904;</p>
-<p>– 5.5 查看前 20 条示例数据<br>SELECT TOP 20 SystemID, Name, port<br>FROM dbo.SystemInfo<br>WHERE ip &#x3D; ‘10.1.12.132’<br>  AND SystemID BETWEEN 9030001 AND 9039904<br>ORDER BY SystemID;</p>
-<p>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 6. 如果验证无误，提交事务；否则回滚<br>– &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>– 若一切正常，执行：<br>COMMIT;<br>– 若有异常，执行：<br>– ROLLBACK;</p>
+</p>
+        
+        
+        
+        
+        </div>
+        
+            <div class="article-more-link">
+                <a href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/#more">查看更多</a>
+            </div>
+        
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
 
-      
+
+
+    
+        <article id="post-SQL-Server-数据库日志管理实战" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
     </div>
 
+
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/" rel="tag">数据库运维</a>, <a class="tag-link-link" href="/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" rel="tag">日志管理</a>
+    </div>
+
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">
+            <time datetime="2026-07-20T07:30:00.000Z" itemprop="datePublished">2026-07-20</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
     
+        <h1 itemprop="name">
+            <a class="article-title" href="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">SQL Server 数据库日志文件管理与收缩实践</a>
+        </h1>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
+            </header>
+        
+        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">SQL Server 数据库日志文件管理与收缩实践</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-07-20 15:30:00 / 修改时间：13:13:31" itemprop="dateCreated datePublished" datetime="2026-07-20T15:30:00+08:00">2026-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="背景与问题"><a href="#背景与问题" class="headerlink" title="背景与问题"></a>背景与问题</h2><p>本文记录了一次针对数据库 <code>XXX__Web</code> 的日志维护操作，包括：</p>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="背景与问题"><a href="#背景与问题" class="headerlink" title="背景与问题"></a>背景与问题</h2><p>本文记录了一次针对数据库 <code>XXX__Web</code> 的日志维护操作，包括：</p>
 <ul>
 <li>将恢复模式临时切换为 <strong>简单模式（SIMPLE）</strong> 以收缩日志；</li>
 <li>使用 <code>DBCC SHRINKFILE</code> 收缩日志文件至指定大小；</li>
 <li>查询当前数据文件大小以验证效果；</li>
-<li>最后将恢复模式恢复为 <strong>完整模式（FULL）</strong> 以保证数据安全。</li>
-</ul>
-<blockquote>
-<p><strong>⚠️ 重要提示</strong>：在生产环境中操作前，请务必完整备份数据库，并确认业务允许短暂的日志截断操作。本文操作仅适用于测试或开发环境。</p>
-</blockquote>
-<hr>
-<h2 id="操作步骤详解"><a href="#操作步骤详解" class="headerlink" title="操作步骤详解"></a>操作步骤详解</h2><h3 id="1-查看当前数据库恢复模式与文件大小（操作前基准）"><a href="#1-查看当前数据库恢复模式与文件大小（操作前基准）" class="headerlink" title="1. 查看当前数据库恢复模式与文件大小（操作前基准）"></a>1. 查看当前数据库恢复模式与文件大小（操作前基准）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看当前恢复模式</span></span><br><span class="line"><span class="keyword">SELECT</span> name, recovery_model_desc </span><br><span class="line"><span class="keyword">FROM</span> sys.databases </span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;XXX__Web&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看当前数据文件和日志文件大小（单位 MB）</span></span><br><span class="line">USE [XXX__Web];</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">SELECT</span> name, type_desc, size <span class="operator">*</span> <span class="number">8</span> <span class="operator">/</span> <span class="number">1024</span> <span class="keyword">AS</span> SizeMB </span><br><span class="line"><span class="keyword">FROM</span> sys.database_files;</span><br></pre></td></tr></table></figure>
-<h3 id="2-将恢复模式切换为“简单模式”"><a href="#2-将恢复模式切换为“简单模式”" class="headerlink" title="2. 将恢复模式切换为“简单模式”"></a>2. 将恢复模式切换为“简单模式”</h3><p>简单模式下，SQL Server 会自动截断事务日志，释放日志文件中的空间（但物理文件大小不一定自动缩小）。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USE [master];</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">ALTER</span> DATABASE [XXX__Web] <span class="keyword">SET</span> RECOVERY SIMPLE;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-<p>为什么要做这一步？<br>在完整恢复模式下，日志文件会持续记录所有事务，即使执行 SHRINKFILE 也可能因为日志尾部处于活动状态而无法收缩到目标大小。切换到简单模式后，检查点会截断非活动日志，释放空间，便于收缩。</p>
-<h3 id="3-收缩日志文件到最小可能大小"><a href="#3-收缩日志文件到最小可能大小" class="headerlink" title="3. 收缩日志文件到最小可能大小"></a>3. 收缩日志文件到最小可能大小</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">USE [XXX__Web];</span><br><span class="line">GO</span><br><span class="line">DBCC SHRINKFILE (N<span class="string">&#x27;JieFaChe_BiaoZhunZhan_Web_log&#x27;</span>, <span class="number">0</span>, TRUNCATEONLY);</span><br><span class="line">GO</span><br><span class="line">TRUNCATEONLY</span><br></pre></td></tr></table></figure>
-<p> 参数表示将文件收缩到当前分配的已用空间大小，不移动任何数据，速度最快。</p>
-<p>执行后，日志文件会缩小到尽可能小，但可能仍保留一些已分配但未使用的空间。</p>
-<h3 id="4-收缩日志文件到指定大小（例如-100-MB）"><a href="#4-收缩日志文件到指定大小（例如-100-MB）" class="headerlink" title="4. 收缩日志文件到指定大小（例如 100 MB）"></a>4. 收缩日志文件到指定大小（例如 100 MB）</h3><p>有时我们希望将日志文件固定为某个较小尺寸（比如 100 MB），以便后续管理。使用带有目标大小的 SHRINKFILE：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USE [XXX__Web];</span><br><span class="line">GO</span><br><span class="line">DBCC SHRINKFILE (N<span class="string">&#x27;JieFaChe_BiaoZhunZhan_Web_log&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-<p>这里的 100 单位是 MB，表示将日志文件收缩到 100 MB。</p>
-<p>注意：如果当前日志中仍有活动事务（如未提交的长事务），收缩可能无法达到目标大小，需要等待事务完成或结合备份日志操作。</p>
-<h3 id="5-验证收缩结果"><a href="#5-验证收缩结果" class="headerlink" title="5. 验证收缩结果"></a>5. 验证收缩结果</h3><p>再次查询文件大小，确认日志文件已缩小：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USE [XXX__Web];</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">SELECT</span> name, type_desc, size <span class="operator">*</span> <span class="number">8</span> <span class="operator">/</span> <span class="number">1024</span> <span class="keyword">AS</span> SizeMB </span><br><span class="line"><span class="keyword">FROM</span> sys.database_files;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="6-恢复为完整恢复模式（生产环境必做）"><a href="#6-恢复为完整恢复模式（生产环境必做）" class="headerlink" title="6. 恢复为完整恢复模式（生产环境必做）"></a>6. 恢复为完整恢复模式（生产环境必做）</h3><p>简单模式不支持点时间恢复（Point-in-Time Recovery），在测试完成后务必切换回完整模式，并立即执行一次完整备份，建立日志备份链。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USE [master];</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">ALTER</span> DATABASE [XXX__Web] <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项与最佳实践"><a href="#注意事项与最佳实践" class="headerlink" title="注意事项与最佳实践"></a>注意事项与最佳实践</h3><p>备份先行：任何 SHRINKFILE 操作前，务必执行完整数据库备份，避免意外数据丢失。</p>
-<p>避免频繁收缩：频繁收缩日志会导致日志文件频繁增长，影响性能。建议定期维护，或设置合理的初始大小和自动增长增量。</p>
-<p>监视活动事务：如果收缩无法达到目标大小，检查是否有未提交的事务或复制、镜像等功能正在使用日志。</p>
-<p>测试环境验证：先在测试环境模拟操作，再应用于生产。</p>
-<p>监控磁盘空间：收缩释放的空间可以用于其他用途，但也要注意数据库增长趋势，合理规划存储。</p>
-<h3 id="扩展知识：日志文件为什么会膨胀？"><a href="#扩展知识：日志文件为什么会膨胀？" class="headerlink" title="扩展知识：日志文件为什么会膨胀？"></a>扩展知识：日志文件为什么会膨胀？</h3><p>在 完整恢复模式 下，所有事务都写入日志，直到日志备份截断非活动部分。</p>
-<p>如果长时间未进行日志备份，或存在未提交的长事务，日志会持续增长。</p>
-<p>自动增长设置（如每次增长 10%）可能导致文件碎片化，影响 I&#x2F;O 性能。</p>
-<p>建议结合定期日志备份（如每小时一次）和监控报警，实现日志空间的主动管理。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>本文记录了一次完整的数据库日志维护操作，从切换模式、收缩、验证到恢复模式。掌握这些技能可以帮助测试人员高效管理测试数据库，避免磁盘空间告警，确保测试环境稳定运行。</p>
-<p>如有疑问或更好的实践，欢迎留言交流！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/07/20/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2026-07-20 11:01:19" itemprop="dateCreated datePublished" datetime="2026-07-20T11:01:19+08:00">2026-07-20</time>
-            </span>
-
-          
-
+</p>
+        
+        
+        
+        
         </div>
-      </header>
+        
+            <div class="article-more-link">
+                <a href="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/#more">查看更多</a>
+            </div>
+        
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
 
     
+</section>
+            
+                <aside id="sidebar">
     
+
+
+
+
+
     
-    <div class="post-body" itemprop="articleBody">
+        
+    
+    <div class="widget-wrap" id="categories"
+        data-category-mode="external"
+        data-tree-src="/assets/wikiflow/category-tree.f6e019c95e05.json"
+        data-current-path="/index.html"
+        data-root-url="/"
+        data-fallback-url="/categories"
+        data-fallback-label="分类"
+        data-expand-all="false">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#" aria-label="分类">
+                <i class="fa-solid fa-angles-down fa-2x"></i>
+            </a>
+            <button class="widget-mobile-toggle" type="button" aria-controls="categories-body" aria-expanded="false" aria-label="分类"></button>
+        </h3>
+        <div class="widget-body" id="categories-body">
 
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+            <div class="category-tree-loading" data-role="category-tree-status" aria-live="polite"></div>
+            <noscript>
+                <p class="category-tree-fallback">
+                    <a href="/categories">分类</a>
+                </p>
+            </noscript>
+        
+        </div>
     </div>
 
+
     
+    <div id="toTop" class="fa-solid fa-angle-up"></div>
+</aside>
+
+                
+            
+            
+        </div>
+        
+        
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            John Doe &copy; 2026
+            <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/AlliotTech/hexo-theme-wikiflow">WikiFlow</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-
-
-
-          </div>
-          
+        
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            tags: 'ams'
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        startup: {
+            pageReady: function () {
+                return MathJax.startup.defaultPageReady().then(function () {
+                    document.querySelectorAll('mjx-container').forEach(function (container) {
+                        if (container.parentNode) container.parentNode.classList.add('has-jax');
+                    });
+                });
+            }
+        }
+    };
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js"></script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">4</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
+    
 
 
 
-      </div>
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2026</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+    
 </body>
 </html>
