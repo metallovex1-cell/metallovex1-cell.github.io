@@ -1,9 +1,11 @@
 ---
-title: API性能测试报告
+title: API性能测试报告User_LogIn
 date: 2026-07-30
 password: 123   # 设置文章密码
 abstract: 这篇文章已加密，请输入密码查看。 # 列表页显示的摘要
 message: 请输入密码查看完整报告。          # 密码框提示语
+tags: [测试报告, 软件测试]
+categories: [测试报告]
 ---
 
 # API性能测试报告 - User_LogIn接口

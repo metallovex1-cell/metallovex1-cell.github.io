@@ -4,7 +4,7 @@ date: 2026-07-28
 password: 123   # 设置文章密码
 abstract: 这篇文章已加密，请输入密码查看。 # 列表页显示的摘要
 tags: [测试报告, 软件测试]
-categories: [测试文档]
+categories: [测试报告]
 
 ---
 
