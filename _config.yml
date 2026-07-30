@@ -104,3 +104,6 @@ deploy:
   type: git
   repo: https://github.com/metallovex1-cell/metallovex1-cell.github.io.git
   branch: main
+# Security
+encrypt:
+  enable: true
