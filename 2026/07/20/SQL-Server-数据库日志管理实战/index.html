@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 8.1.2">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="背景与问题本文记录了一次针对数据库 XXX__Web 的日志维护操作，包括：  将恢复模式临时切换为 简单模式（SIMPLE） 以收缩日志； 使用 DBCC SHRINKFILE 收缩日志文件至指定大小； 查询当前数据文件大小以验证效果； 最后将恢复模式恢复为 完整模式（FULL） 以保证数据安全。   ⚠️ 重要提示：在生产环境中操作前，请务必完整备份数据库，并确认业务允许短暂的日志截断操作。本">
+    <meta charset="utf-8">
+    
+    <title>SQL Server 数据库日志文件管理与收缩实践 | </title>
+    
+    
+        <meta name="keywords" content="SQL Server,数据库运维,日志管理" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    
+        <meta name="description" content="背景与问题本文记录了一次针对数据库 XXX__Web 的日志维护操作，包括：  将恢复模式临时切换为 简单模式（SIMPLE） 以收缩日志； 使用 DBCC SHRINKFILE 收缩日志文件至指定大小； 查询当前数据文件大小以验证效果； 最后将恢复模式恢复为 完整模式（FULL） 以保证数据安全。   ⚠️ 重要提示：在生产环境中操作前，请务必完整备份数据库，并确认业务允许短暂的日志截断操作。本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server 数据库日志文件管理与收缩实践">
 <meta property="og:url" content="http://example.com/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/index.html">
@@ -30,173 +25,224 @@
 <meta property="article:tag" content="数据库运维">
 <meta property="article:tag" content="日志管理">
 <meta name="twitter:card" content="summary">
+    
+    
 
-<link rel="canonical" href="http://example.com/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">
+    
+        <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="container">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header id="header">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header-main" class="header-inner">
+        <div class="outer header-main-inner">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title"></span>
+            </a>
+            
+                <nav id="main-nav" aria-label="Primary">
+                    
+                        <a class="main-nav-link" href="/">首页</a>
+                    
+                        <a class="main-nav-link" href="/archives">归档</a>
+                    
+                        <a class="main-nav-link" href="/categories">分类</a>
+                    
+                        <a class="main-nav-link" href="/tags">标签</a>
+                    
+                        <a class="main-nav-link" href="/about">关于</a>
+                    
+                </nav>
+            
+            <div class="header-actions">
+                
+                <div id="search-form-wrap">
+
+
+    <button type="button" class="search-form-trigger" aria-label="搜索" title="搜索"></button>
+
+</div>
+
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container" role="dialog" aria-modal="true" aria-label="搜索">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." aria-label="搜索" />
+            <button type="button" class="ins-close ins-selectable" aria-label="Close search"><i class="fa-solid fa-circle-xmark"></i></button>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
 
-  <title>SQL Server 数据库日志文件管理与收缩实践 | </title>
-  
+<script src="/js/insight.js"></script>
 
 
 
 
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+                
+                    <button id="mobile-menu-trigger" class="mobile-menu-trigger" type="button" aria-controls="mobile-menu-panel" aria-expanded="false" aria-label="Menu" title="Menu"></button>
+                
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title"></h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+        <div id="main-nav-mobile" class="header-sub header-inner">
+            <nav class="outer mobile-menu mobile-menu-primary" aria-label="Mobile primary">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+            </nav>
+        </div>
+        <div id="mobile-menu-panel" class="mobile-menu-panel" hidden>
+            <nav class="outer mobile-menu-drawer" aria-label="Mobile menu">
+                <span class="mobile-menu-heading">Topics</span>
+                <div class="mobile-menu-list">
+                    
+                        <a class="main-nav-link" href="/">首页</a>
+                    
+                        <a class="main-nav-link" href="/archives">归档</a>
+                    
+                        <a class="main-nav-link" href="/categories">分类</a>
+                    
+                        <a class="main-nav-link" href="/tags">标签</a>
+                    
+                        <a class="main-nav-link" href="/about">关于</a>
+                    
+                </div>
+            </nav>
+        </div>
+    
+</header>
+
+        
+        <div class="outer">
+            <section id="main" tabindex="-1"><article id="post-SQL-Server-数据库日志管理实战" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa-solid fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </div>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+                        
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="tag-link-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/" rel="tag">数据库运维</a>, <a class="tag-link-link" href="/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" rel="tag">日志管理</a>
+    </div>
 
-          <div class="content post posts-expand">
+
+                        
+    <div class="article-date">
+        <i class="fa-solid fa-calendar"></i>
+        <a href="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">
+            <time datetime="2026-07-20T07:30:00.000Z" itemprop="datePublished">2026-07-20</time>
+        </a>
+    </div>
+
+
+                        
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            SQL Server 数据库日志文件管理与收缩实践
+        </h1>
+    
+
+
+            </header>
+        
+        
+
+        
+        <div class="article-entry" itemprop="articleBody">
+        
             
 
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          SQL Server 数据库日志文件管理与收缩实践
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-07-20 15:30:00 / 修改时间：13:13:31" itemprop="dateCreated datePublished" datetime="2026-07-20T15:30:00+08:00">2026-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
+        <details class="post-toc post-toc-mobile">
+            <summary class="post-toc-title">文章目录</summary>
+            <div class="post-toc-body">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">背景与问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">操作步骤详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%EF%BC%88%E6%93%8D%E4%BD%9C%E5%89%8D%E5%9F%BA%E5%87%86%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">1. 查看当前数据库恢复模式与文件大小（操作前基准）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%86%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2%E4%B8%BA%E2%80%9C%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E2%80%9D"><span class="toc-number">2.2.</span> <span class="toc-text">2. 将恢复模式切换为“简单模式”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%80%E5%B0%8F%E5%8F%AF%E8%83%BD%E5%A4%A7%E5%B0%8F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 收缩日志文件到最小可能大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%EF%BC%88%E4%BE%8B%E5%A6%82-100-MB%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">4. 收缩日志文件到指定大小（例如 100 MB）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%AA%8C%E8%AF%81%E6%94%B6%E7%BC%A9%E7%BB%93%E6%9E%9C"><span class="toc-number">2.5.</span> <span class="toc-text">5. 验证收缩结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%81%A2%E5%A4%8D%E4%B8%BA%E5%AE%8C%E6%95%B4%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%BF%85%E5%81%9A%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">6. 恢复为完整恢复模式（生产环境必做）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.7.</span> <span class="toc-text">注意事项与最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%86%A8%E8%83%80%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">扩展知识：日志文件为什么会膨胀？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">2.9.</span> <span class="toc-text">结语</span></a></li></ol></li></ol>
+            </div>
+        </details>
     
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h2 id="背景与问题"><a href="#背景与问题" class="headerlink" title="背景与问题"></a>背景与问题</h2><p>本文记录了一次针对数据库 <code>XXX__Web</code> 的日志维护操作，包括：</p>
+
+        
+        
+        
+            <h2 id="背景与问题"><a href="#背景与问题" class="headerlink" title="背景与问题"></a>背景与问题</h2><p>本文记录了一次针对数据库 <code>XXX__Web</code> 的日志维护操作，包括：</p>
 <ul>
 <li>将恢复模式临时切换为 <strong>简单模式（SIMPLE）</strong> 以收缩日志；</li>
 <li>使用 <code>DBCC SHRINKFILE</code> 收缩日志文件至指定大小；</li>
@@ -237,199 +283,158 @@
 <h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>本文记录了一次完整的数据库日志维护操作，从切换模式、收缩、验证到恢复模式。掌握这些技能可以帮助测试人员高效管理测试数据库，避免磁盘空间告警，确保测试环境稳定运行。</p>
 <p>如有疑问或更好的实践，欢迎留言交流！</p>
 
+        
+        
+        </div>
+        
+        
+            
+<nav id="article-nav" aria-label="Article navigation">
+    
+        <a href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/" id="article-nav-newer" class="article-nav-link-wrap">
+            <span class="article-nav-icon fa-solid fa-angle-left" aria-hidden="true"></span>
+            <span class="article-nav-content">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    SQL Server 批量添加数据
+                
+            </div>
+            </span>
+        </a>
+    
+    
+</nav>
+
+
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+    
+    
+
+
+
+
+</section>
+            
+                <aside id="sidebar">
+    
+
+
+
+
+    
+        <nav class="post-toc post-toc-sidebar widget-wrap" aria-label="文章目录">
+            <h3 class="widget-title">
+                <span>文章目录</span>
+            </h3>
+            <div class="post-toc-body widget">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">背景与问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">操作步骤详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%EF%BC%88%E6%93%8D%E4%BD%9C%E5%89%8D%E5%9F%BA%E5%87%86%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">1. 查看当前数据库恢复模式与文件大小（操作前基准）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%86%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2%E4%B8%BA%E2%80%9C%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E2%80%9D"><span class="toc-number">2.2.</span> <span class="toc-text">2. 将恢复模式切换为“简单模式”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%80%E5%B0%8F%E5%8F%AF%E8%83%BD%E5%A4%A7%E5%B0%8F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 收缩日志文件到最小可能大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%EF%BC%88%E4%BE%8B%E5%A6%82-100-MB%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">4. 收缩日志文件到指定大小（例如 100 MB）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%AA%8C%E8%AF%81%E6%94%B6%E7%BC%A9%E7%BB%93%E6%9E%9C"><span class="toc-number">2.5.</span> <span class="toc-text">5. 验证收缩结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%81%A2%E5%A4%8D%E4%B8%BA%E5%AE%8C%E6%95%B4%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%BF%85%E5%81%9A%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">6. 恢复为完整恢复模式（生产环境必做）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.7.</span> <span class="toc-text">注意事项与最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%86%A8%E8%83%80%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">扩展知识：日志文件为什么会膨胀？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">2.9.</span> <span class="toc-text">结语</span></a></li></ol></li></ol>
+            </div>
+        </nav>
+    
+
+
+    
+        
+    
+    <div class="widget-wrap" id="categories"
+        data-category-mode="external"
+        data-tree-src="/assets/wikiflow/category-tree.f6e019c95e05.json"
+        data-current-path="/2026/07/20/SQL-Server-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98/"
+        data-root-url="/"
+        data-fallback-url="/categories"
+        data-fallback-label="分类"
+        data-expand-all="false">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#" aria-label="分类">
+                <i class="fa-solid fa-angles-down fa-2x"></i>
+            </a>
+            <button class="widget-mobile-toggle" type="button" aria-controls="categories-body" aria-expanded="false" aria-label="分类"></button>
+        </h3>
+        <div class="widget-body" id="categories-body">
+
+        
+            <div class="category-tree-loading" data-role="category-tree-status" aria-live="polite"></div>
+            <noscript>
+                <p class="category-tree-fallback">
+                    <a href="/categories">分类</a>
+                </p>
+            </noscript>
+        
+        </div>
     </div>
 
-    
-    
-    
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/SQL-Server/" rel="tag"># SQL Server</a>
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/" rel="tag"># 数据库运维</a>
-              <a href="/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" rel="tag"># 日志管理</a>
-          </div>
+    
+    <div id="toTop" class="fa-solid fa-angle-up"></div>
+</aside>
+
+                
+            
+            
+        </div>
+        
+        
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            John Doe &copy; 2026
+            <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/AlliotTech/hexo-theme-wikiflow">WikiFlow</a>
+            
+        </div>
+    </div>
+</footer>
 
         
 
 
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2026/07/20/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2026/07/20/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AE%9E%E4%BE%8Bsql/" rel="next" title="SQL Server 批量添加数据">
-      SQL Server 批量添加数据 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
     
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
+        
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            tags: 'ams'
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        startup: {
+            pageReady: function () {
+                return MathJax.startup.defaultPageReady().then(function () {
+                    document.querySelectorAll('mjx-container').forEach(function (container) {
+                        if (container.parentNode) container.parentNode.classList.add('has-jax');
+                    });
+                });
+            }
+        }
+    };
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js"></script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">背景与问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">操作步骤详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%EF%BC%88%E6%93%8D%E4%BD%9C%E5%89%8D%E5%9F%BA%E5%87%86%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. 查看当前数据库恢复模式与文件大小（操作前基准）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B0%86%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2%E4%B8%BA%E2%80%9C%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E2%80%9D"><span class="nav-number">2.2.</span> <span class="nav-text">2. 将恢复模式切换为“简单模式”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%80%E5%B0%8F%E5%8F%AF%E8%83%BD%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.3.</span> <span class="nav-text">3. 收缩日志文件到最小可能大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%94%B6%E7%BC%A9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%EF%BC%88%E4%BE%8B%E5%A6%82-100-MB%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">4. 收缩日志文件到指定大小（例如 100 MB）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E9%AA%8C%E8%AF%81%E6%94%B6%E7%BC%A9%E7%BB%93%E6%9E%9C"><span class="nav-number">2.5.</span> <span class="nav-text">5. 验证收缩结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%81%A2%E5%A4%8D%E4%B8%BA%E5%AE%8C%E6%95%B4%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%BF%85%E5%81%9A%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">6. 恢复为完整恢复模式（生产环境必做）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.7.</span> <span class="nav-text">注意事项与最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%86%A8%E8%83%80%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">扩展知识：日志文件为什么会膨胀？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.9.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">4</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
+    
 
 
 
-      </div>
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2026</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+    
 </body>
 </html>
