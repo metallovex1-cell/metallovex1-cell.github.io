@@ -27,7 +27,7 @@
     "hexo-theme-landscape": "^1.0.0",
     "hexo-theme-wikiflow": "^0.0.3",
     "next": "^16.2.12",
-    "react": "^19.2.8",
+    "react": "^19.3.0",
     "react-dom": "^19.2.8"
   }
 }
